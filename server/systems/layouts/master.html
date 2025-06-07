@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Paperless | {{ copy }}</title>
+  <link rel="shortcut icon" type="image/ico" href="/images/dit-logo-transparent.png" />
+  <link rel="stylesheet" href="/adminlte/dist/css/google_fonts.css">
+  <link rel="stylesheet" href="/adminlte/plugins/fontawesome-free/css/all.min.css">
+  <link rel="stylesheet" href="/adminlte/dist/css/adminlte.min.css">
+  <link rel="stylesheet" href="/adminlte/plugins/bs-stepper/css/bs-stepper.min.css">
+  <link rel="stylesheet" href="/adminlte/plugins/select2/css/select2.min.css">
+  <link rel="stylesheet" href="/adminlte/plugins/toastr/toastr.min.css">
+  <style>
+    .line {
+      align-items: center;
+      margin: 1em -1em;
+    }
+
+    .divider {
+      display: flex;
+    }
+
+    .one-line:before,
+    .one-line:after {
+      background: black;
+    }
+
+    .line:before,
+    .line:after {
+      height: 1px;
+      margin: 0 1em;
+    }
+
+    .divider:before,
+    .divider:after {
+      content: "";
+      flex: 1;
+    }
+
+    .one-line:before,
+    .one-line:after {
+      background: black;
+    }
+
+    .line:before,
+    .line:after {
+      height: 1px;
+      margin: 0 1em;
+    }
+
+    .divider:before,
+    .divider:after {
+      content: "";
+      flex: 1;
+    }
+
+    .select2-selection__rendered {
+      line-height: 31px !important;
+    }
+
+    .select2-container .select2-selection--single {
+      height: 38px !important;
+      padding-left: 0px;
+      border-color: rgb(207, 204, 204);
+    }
+
+    .select2-selection__arrow {
+      height: 34px !important;
+    }
+
+    .select2 {
+      width: 100% !important;
+    }
+  </style>
+  <style>
+    .blink_me {
+      animation: blinker 2s linear infinite;
+    }
+
+    @keyframes blinker {
+      50% {
+        opacity: 0;
+      }
+    }
+  </style>
+
+  <style>
+    .content-wrapper {
+      background: radial-gradient(circle, rgba(229, 250, 255, 1) 4%, rgba(252, 252, 247, 1) 85%);
+    }
+  </style>
+  {{template "css" .}}
+</head>
+
+<body class="hold-transition sidebar-mini layout-footer-fixed layout-navbar-fixed {{ .layout }}">
+  <div class="wrapper">
+
+    <!-- Navbar -->
+    <nav class="main-header navbar navbar-expand navbar-white navbar-light text-sm">
+      {{include "layouts/partials/_navbar"}}
+    </nav>
+    <!-- /.navbar -->
+
+    <!-- Main Sidebar Container -->
+    <aside class="main-sidebar sidebar-dark-primary elevation-4">
+      {{include "layouts/partials/_leftsidebar"}}
+    </aside>
+
+    <!-- Content Wrapper. Contains page content -->
+    <div class="content-wrapper">
+      <!-- Content Header (Page header) -->
+      <div class="content-header">
+        <div class="container-fluid">
+          {{include "layouts/partials/_breadcrumb"}}
+        </div><!-- /.container-fluid -->
+      </div>
+      <!-- /.content-header -->
+
+      <!-- Main content -->
+      <div class="content">
+        <div class="container-fluid">
+          <div class="box-body">
+
+            {{template "content" .}}
+          </div>
+          <!-- /.row -->
+        </div><!-- /.container-fluid -->
+      </div>
+      <!-- /.content -->
+    </div>
+    <!-- /.content-wrapper -->
+
+    <!-- Control Sidebar -->
+    <aside class="control-sidebar control-sidebar-dark">
+      {{include "layouts/partials/_rightsidebar"}}
+    </aside>
+    <!-- /.control-sidebar -->
+
+    <!-- Main Footer -->
+    <footer class="main-footer text-sm">
+      {{include "layouts/partials/_footer"}}
+    </footer>
+
+    <template id="my-template">
+      <swal-title>
+        Save changes to "Untitled 1" before closing?
+      </swal-title>
+      <swal-icon type="warning" color="red"></swal-icon>
+      <swal-button type="confirm">
+        Save As
+      </swal-button>
+      <swal-button type="cancel">
+        Cancel
+      </swal-button>
+      <swal-button type="deny">
+        Close without Saving
+      </swal-button>
+      <swal-param name="allowEscapeKey" value="false" />
+      <swal-param name="customClass" value='{ "popup": "my-popup" }' />
+    </template>
+  </div>
+  <!-- ./wrapper -->
+
+  <!-- REQUIRED SCRIPTS -->
+  <!-- jQuery -->
+  <script src="/adminlte/plugins/jquery/jquery.min.js"></script>
+  <script src="/adminlte/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="/adminlte/dist/js/adminlte.min.js"></script>
+  <script src="/adminlte/plugins/fontawesome-free/js/all.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+  <script src="/adminlte/plugins/select2/js/select2.full.min.js "></script>
+  <script src="/adminlte/plugins/toastr/toastr.min.js"></script>
+  <script>
+    $(function () {
+      $('.select2').select2({
+        allowClear: false,
+      });
+
+    });
+  </script>
+  <script>
+    var infos = "{{.infos}}";
+    if (infos != "[]") {
+      toastr.success(infos);
+    }
+
+    var errors = "{{.errors}}";
+    if (errors != "[]") {
+      toastr.error(errors);
+    }
+  </script>
+  {{template "js" .}}
+</body>
+
+</html>

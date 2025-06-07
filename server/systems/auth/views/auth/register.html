@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{{ .title }}</title>
+  <link rel="shortcut icon" type="image/x-icon" href="/images/dit-logo-transparent.png" />
+  <link rel="stylesheet" href="/adminlte/dist/css/google_fonts.css">
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="/adminlte/plugins/fontawesome-free/css/all.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css" />
+  <!-- icheck bootstrap -->
+  <link rel="stylesheet" href="/adminlte/plugins/icheck-bootstrap/icheck-bootstrap.min.css">
+  <!-- Theme style -->
+  <link rel="stylesheet" href="/adminlte/dist/css/adminlte.min.css">
+  <!-- Toastr -->
+
+  <style type="text/css">
+    #passwordStrength {
+      width: 30%;
+      height: 5px;
+      margin: 5px 0;
+      display: none;
+    }
+
+    #passwordStrength span {
+      position: relative;
+      height: 100%;
+      width: 100%;
+      background: lightgrey;
+      border-radius: 5px;
+    }
+
+    #passwordStrength span:nth-child(2) {
+      margin: 0 3px;
+    }
+
+    #passwordStrength span.active:before {
+      position: absolute;
+      content: '';
+      top: 0;
+      left: 0;
+      height: 100%;
+      width: 100%;
+      border-radius: 5px;
+    }
+
+    #passwordStrength span#poor:before {
+      background-color: #ff4757;
+    }
+
+    #passwordStrength span#weak:before {
+      background-color: orange;
+    }
+
+    #passwordStrength span#strong:before {
+      background-color: #23ad5c;
+    }
+
+    #passwordInfo {
+      font-size: 15px;
+    }
+
+    #passwordInfo #poor {
+      color: red;
+    }
+
+    #passwordInfo #weak {
+      color: orange;
+    }
+
+    #passwordInfo #strong {
+      color: green;
+    }
+  </style>
+  <style>
+    #confirmPassword-feedback {
+      color: red;
+    }
+  </style>
+</head>
+
+<body class="hold-transition register-page"
+  style="background: linear-gradient(0deg, rgba(0,166,252,1) 0%, rgba(143,217,255,1) 100%);">
+  <div class="register-box">
+    <div class="login-logo">
+      <a href=""><b>TRAINING FRONTEND</b></a>
+    </div>
+    <div class="card">
+      <div class="card-body">
+        <p class="login-box-msg"></p>
+        <form action="/auth/register" method="POST" id="myForm">
+          <input type="hidden" name="csrf" value="{{ .csrf }}">
+          {{ include "auth/views/auth/partials/_register_form" }}
+        </form>
+        <a href="/auth/login" class="text-center">I already have a membership</a>
+      </div>
+      <!-- /.form-box -->
+    </div><!-- /.card -->
+  </div>
+  <!-- /.register-box -->
+  <div class="footer">
+    <hr>
+    &copy; {{ copy }} Training Frontend
+  </div>
+
+
+  <!-- jQuery -->
+  <script src="/adminlte/plugins/jquery/jquery.min.js"></script>
+  <!-- Bootstrap 4 -->
+  <script src="/adminlte/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <!-- AdminLTE App -->
+  <script src="/adminlte/dist/js/adminlte.min.js"></script>
+  <!-- InputMask -->
+  <script src="/adminlte/plugins/moment/moment.min.js"></script>
+  <script src="/adminlte/plugins/inputmask/jquery.inputmask.min.js"></script>
+  <!-- Toastr -->
+
+  <!-- Toastr -->
+  <script src="/adminlte/dist/js/custom.js"></script>
+  <script>
+    var errors = "{{.errors}}";
+    if (errors != "[]") {
+      toastr.error(errors);
+    } 
+  </script>
+
+  <script>
+    window.onload = () => {
+      const myInput = document.getElementById('password');
+      const anotherInput = document.getElementById('confirm_password');
+      myInput.oncopy = e => e.preventDefault();
+      myInput.oncut = e => e.preventDefault();
+      anotherInput.oncopy = e => e.preventDefault();
+      anotherInput.oncut = e => e.preventDefault();
+    }
+    var infos = "{{.infos}}";
+    if (infos != "[]") {
+      toastr.success(infos);
+    }
+    var errors = "{{.errors}}";
+    if (errors != "[]") {
+      toastr.error(errors);
+    }
+  </script>
+
+  <script>
+    const togglePassword = document.querySelector('#togglePassword');
+    const password = document.querySelector('#password');
+    togglePassword.addEventListener('click', function (e) {
+      // toggle the type attribute
+      const type = password.getAttribute('type') === 'password' ? 'text' : 'password';
+      password.setAttribute('type', type);
+      // toggle the eye / eye slash icon
+      this.classList.toggle('bi-eye');
+    });
+  </script>
+
+  <script>
+    const toggleRepeatPassword = document.querySelector('#toggleRepeatPassword');
+    const confirm_password = document.querySelector('#confirm_password');
+    toggleRepeatPassword.addEventListener('click', function (e) {
+      // toggle the type attribute
+      const type = confirm_password.getAttribute('type') === 'password' ? 'text' : 'password';
+      confirm_password.setAttribute('type', type);
+      // toggle the eye / eye slash icon
+      this.classList.toggle('bi-eye');
+    });
+  </script>
+
+  <script>
+    let passwordInput = document.querySelector('#passwordInput input[type="password"]');
+    let passwordStrength = document.getElementById('passwordStrength');
+    let poor = document.querySelector('#passwordStrength #poor');
+    let weak = document.querySelector('#passwordStrength #weak');
+    let strong = document.querySelector('#passwordStrength #strong');
+    let passwordInfo = document.getElementById('passwordInfo');
+
+    let poorRegExp = /[a-z]/;
+    let weakRegExp = /(?=.*?[0-9])/;;
+    let strongRegExp = /(?=.*?[#?!@$%^&*-])/;
+    let whitespaceRegExp = /^$|\s+/;
+
+
+    passwordInput.oninput = function () {
+
+      let passwordValue = passwordInput.value;
+      let passwordLength = passwordValue.length;
+
+      let poorPassword = passwordValue.match(poorRegExp);
+      let weakPassword = passwordValue.match(weakRegExp);
+      let strongPassword = passwordValue.match(strongRegExp);
+      let whitespace = passwordValue.match(whitespaceRegExp);
+
+      if (passwordValue != "") {
+
+        passwordStrength.style.display = "block";
+        passwordStrength.style.display = "flex";
+        passwordInfo.style.display = "block";
+        passwordInfo.style.color = "black";
+
+        if (whitespace) {
+          passwordInfo.textContent = "whitespaces are not allowed";
+        } else {
+          poorPasswordStrength(passwordLength, poorPassword, weakPassword, strongPassword);
+          weakPasswordStrength(passwordLength, poorPassword, weakPassword, strongPassword);
+          strongPasswordStrength(passwordLength, poorPassword, weakPassword, strongPassword);
+        }
+
+
+      } else {
+
+        passwordStrength.style.display = "none";
+        passwordInfo.style.display = "none";
+
+      }
+    }
+
+    function poorPasswordStrength(passwordLength, poorPassword, weakPassword, strongPassword) {
+
+      if (passwordLength <= 3 && (poorPassword || weakPassword || strongPassword)) {
+        poor.classList.add("active");
+        passwordInfo.style.display = "block";
+        passwordInfo.style.color = "red";
+        passwordInfo.textContent = "Your password is too Poor";
+
+      }
+    }
+
+    function weakPasswordStrength(passwordLength, poorPassword, weakPassword, strongPassword) {
+      if (passwordLength >= 4 && poorPassword && (weakPassword || strongPassword)) {
+        weak.classList.add("active");
+        passwordInfo.textContent = "Your password is Weak";
+        passwordInfo.style.color = "orange";
+
+      } else {
+        weak.classList.remove("active");
+
+      }
+    }
+
+    function strongPasswordStrength(passwordLength, poorPassword, weakPassword, strongPassword) {
+
+      if (passwordLength >= 6 && (poorPassword && weakPassword) && strongPassword) {
+        poor.classList.add("active");
+        weak.classList.add("active");
+        strong.classList.add("active");
+        passwordInfo.textContent = "Your password is strong";
+        passwordInfo.style.color = "green";
+      } else {
+        strong.classList.remove("active");
+
+      }
+    }
+  </script>
+  <script>
+    const form = document.getElementById("myForm");
+    const ppassword = form.password;
+    const confirmPassword = form.confirm_password;
+    const feedback = document.getElementById("confirmPassword-feedback");
+    let isPasswordMatch = false;
+
+    confirmPassword.addEventListener("input", () => {
+      if (ppassword.value != confirmPassword.value) {
+        feedback.innerHTML = "Password did not match.";
+        isPasswordMatch = false;
+      } else {
+        feedback.innerHTML = "";
+        isPasswordMatch = true;
+      }
+    });
+
+    form.onsubmit = function () {
+      if (isPasswordMatch) {
+        return true;
+      }
+      alert("Wait! Password did not match.");
+      return false;
+    };
+  </script>
+</body>
+
+</html>

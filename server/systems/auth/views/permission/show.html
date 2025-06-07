@@ -1,0 +1,61 @@
+{{define "css"}} {{ end }} 
+{{define "content"}}
+ 
+<div class="row" style="margin-top: -4rem;">
+    <div class="col-12">
+        <div class="callout callout-info">
+            <h4 class="my-1 mb-3 float-left"><i class="fa-solid fa-user-gear text-primary text-small"></i>&nbsp;
+                Permission Details
+            </h4>
+            <div class="btn-group btn-group-sm float-right mt-2" role="group">
+                <a href="/auth/permissions/list" class="btn btn-primary" title="Add New"
+                    style="text-decoration: none; color: white;">
+                    All Permissions
+                </a>
+            </div>
+            <br><br>
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-5 col-sm-12">
+        <div class="card">
+            <table class="table table-sm p-2">
+                <tr>
+                    <th colspan="2">Permission Information
+                        <div class="btn-group btn-group-sm float-right" role="group">
+                        </div>
+                    </th>
+                </tr>
+                <tbody>
+                    <tr>
+                        <td>Path</td>
+                        <td>{{ .data.Path}}</td>
+                    </tr>
+                    <tr>
+                        <td>Method</td>
+                        <td><span class="badge bg-primary">{{
+                                .data.Method}}</span></td>
+                    </tr>
+                    <tr>
+                        <td>Service</td>
+                        <td>{{ .data.Service}}</td>
+                    </tr>
+                    <tr>
+                        <td>Sub Service</td>
+                        <td><span class="badge bg-info">{{
+                                .data.SubService}}</span></td>
+                    </tr>
+                    <tr>
+                        <td>Created At</td>
+                        <td>{{ timestamp .data.CreatedAt}}</td>
+                    </tr>
+
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <!-- /.card-body -->
+</div>
+<!-- /.card -->
+{{end}} {{define "js"}} {{ end }}

@@ -1,0 +1,1416 @@
+{{if hasAnyRole .roles "Admin " "AO" "AO Mwanza" "ACO" "ACO Basic" "ACO Mwanza" "CDTT"
+"Dean" "Doctor" "DPARC" "DAC" "EC" "EO" "IEC" "Internal Auditor" "HOD" "Paperless Team"
+"Registrar" "Staff" "Registration TS" "Warden"}}
+
+<li class="nav-item">
+    <a class='nav-link'>
+        <i class="fa-solid fa-book-open-reader nav-icon"></i>
+        <p>SOMA</p>
+    </a>
+</li>
+
+<!-- Student Registration -->
+{{if hasAnyRole .roles "AO" "ACO" "AO Mwanza" "Paperless Team" "Registrar" "HOD" "EC" "EO" "ACO Mwanza"
+"ACO Basic" "Registration TS" "Internal Auditor" "DPARC" "DAC"}}
+<li class='nav-item has-treeview {{ menu .path
+                    "/soma/registration-step/fresher"
+                    "/soma/registration-step/student-registration-status" 
+                    "/soma/student-image/"
+                    "/auth/reset-student-password"
+                    "/auth/reset-email-for-student"
+                    "/soma/student/edit-dob"
+                    "/soma/student/edit-user-id"
+                    "/soma/resuming-studies/list"
+                    "/soma/program-transfer/"
+                    "/soma/id-card/list"
+                    "/soma/registration-report/index"
+                    "/soma/bill/filter"}}'>
+    <a href="#" class='nav-link {{ active .path
+                    "/soma/registration-step/fresher"
+                    "/soma/registration-step/student-registration-status"
+                    "/soma/student-image/"
+                    "/auth/reset-student-password"
+                    "/auth/reset-email-for-student"
+                    "/soma/student/edit-dob"
+                    "/soma/student/edit-user-id"
+                    "/soma/resuming-studies/list"
+                    "/soma/id-card/list"
+                    "/soma/program-transfer/"
+                    "/soma/registration-report/index"
+                    "/soma/bill/filter"}}'>
+        <i class="fa-solid fa-arrows-down-to-people nav-icon"></i>
+        <p>
+            Student Registration
+            <i class="right fas fa-angle-left"></i>
+        </p>
+    </a>
+    <ul class="nav nav-treeview">
+        {{if hasAnyRole .roles "AO" "ACO" "AO Mwanza" "Paperless Team" "Registrar" "EO" "ACO Mwanza"
+        "Internal Auditor" "DPARC" "DAC"}}
+        <li class="nav-item">
+            <a href="/soma/registration-step/fresher"
+                class='nav-link {{ active .path "/soma/registration-step/fresher"}}'>
+                <i class="fa-regular fa-circle-check nav-icon"></i>
+                <p>Registration Confirmation</p>
+            </a>
+        </li>
+        <li class="nav-item">
+            <a href="/soma/registration-step/student-registration-status"
+                class='nav-link {{ active .path "/soma/registration-step/student-registration-status"}}'>
+                <i class="fa fa-flag-checkered nav-icon"></i>
+                <p>Registration Status</p>
+            </a>
+        </li>
+        {{if hasAnyRole .roles "AO" "AO Mwanza" "Registrar"}}
+        <li class="nav-item">
+            <a href="/soma/resuming-studies/list" class='nav-link {{ active .path "/soma/resuming-studies/list"}}'>
+                <i class="fa-solid fa-forward-fast nav-icon"></i>
+                <p>Resuming Students</p>
+            </a>
+        </li>
+        {{end}}
+        {{if hasAnyRole .roles "AO" "AO Mwanza" "Paperless Team"}}
+        <li class="nav-item">
+            <a href="/soma/bill/filter" class='nav-link {{ active .path "/soma/bill/filter"}}'>
+                <i class="fa-solid fa-money-bill-transfer nav-icon"></i>
+                <p>Payment</p>
+            </a>
+        </li>
+        {{end}}
+        {{if hasAnyRole .roles "Registrar"}}
+        <li class="nav-item">
+            <a href="/soma/program-transfer/list" class='nav-link {{ active .path "/soma/program-transfer/list"}}'>
+                <i class="fas fa-fw fa-exchange-alt nav-icon"></i>
+                <p>Program Transfer</p>
+            </a>
+        </li>
+        {{end}}
+        {{if hasAnyRole .roles "AO" "AO Mwanza"}}
+        <li class="nav-item">
+            <a href="/soma/id-card/list" class='nav-link {{ active .path "/soma/id-card/list"}}'>
+                <i class="fa-solid fa-id-card nav-icon"></i>
+                <p>Student ID Card</p>
+            </a>
+        </li>
+        <li class="nav-item">
+            <a href="/soma/student-image/list" class='nav-link {{ active .path "/soma/student-image"}}'>
+                <i class="fa-solid fa-images nav-icon"></i>
+                <p>Student Image</p>
+            </a>
+        </li>
+        {{end}}
+        {{if hasAnyRole .roles "AO" "AO Mwanza" "EO"}}
+        <li class="nav-item">
+            <a href="/soma/student/edit-dob" class='nav-link {{ active .path "/soma/student/edit-dob"}}'>
+                <i class="fa-solid fa-calendar nav-icon"></i>
+                <p>Change DOB</p>
+            </a>
+        </li>
+        {{end}}
+        {{end}}
+        {{if hasAnyRole .roles "AO" "AO Mwanza"}}
+        <li class="nav-item">
+            <a href="/auth/reset-student-password" class='nav-link {{ active .path "/auth/reset-student-password"}}'>
+                <i class="fa-solid fa-key nav-icon"></i>
+                <p>Reset Password</p>
+            </a>
+        </li>
+        {{end}}
+        <li class="nav-item">
+            <a href="/soma/registration-report/index"
+                class='nav-link {{ active .path "/soma/registration-report/index"}}'>
+                <i class="fa-solid fa-clapperboard nav-icon"></i>
+                <p>Registration Reports</p>
+            </a>
+        </li>
+    </ul>
+</li>
+{{end}}
+
+<!-- Finance -->
+{{if hasAnyRole .roles "Paperless Team" "ACO" "AO" "AO Mwanza" "HAO" "ACO Basic" "Registrar"
+"Internal Auditor"}}
+<li class='nav-item has-treeview {{ menu .path
+    "/soma/financial-audit/"
+    "/soma/payment-attachment/"
+    "/soma/fee-structure/"
+    "/soma/payment-allocation/"
+    "/soma/student-payment/"
+    "/soma/financial-report/"
+    }} '>
+    <a href="#" class='nav-link {{ active .path
+    "/soma/financial-audit/"
+    "/soma/payment-attachment/"
+    "/soma/fee-structure/"
+    "/soma/payment-allocation/"
+    "/soma/student-payment/"
+    "/soma/financial-report/"
+        }}'>
+        <i class="fa-solid fa-money-bills nav-icon"></i>
+        <p>
+            Finance
+            <i class="right fas fa-angle-left"></i>
+        </p>
+    </a>
+    <ul class="nav nav-treeview">
+        {{if hasAnyRole .roles "Paperless Team" "ACO" "Internal Auditor"}}
+        <li class="nav-item">
+            <a href="/soma/payment-attachment/upload-direct-deposit"
+                class='nav-link {{ active .path "/soma/payment-attachment/upload-direct-deposit"}}'>
+                <i class="far fa-circle nav-icon"></i>
+                <p>Direct Deposit</p>
+            </a>
+        </li>
+        <li class="nav-item">
+            <a href="/soma/payment-attachment/upload-loan"
+                class='nav-link {{ active .path "/soma/payment-attachment/upload-loan" }}'>
+                <i class="far fa-circle nav-icon"></i>
+                <p>
+                    Loans
+                </p>
+            </a>
+        </li>
+        <li class="nav-item">
+            <a href="/soma/payment-attachment/upload-scholarship"
+                class='nav-link {{ active .path "/soma/payment-attachment/upload-scholarship" }}'>
+                <i class="far fa-circle nav-icon"></i>
+                <p>
+                    Scholarships
+                </p>
+            </a>
+        </li>
+        <li class="nav-item">
+            <a href="/soma/payment-attachment/upload-dit-waiver"
+                class='nav-link {{ active .path "/soma/payment-attachment/upload-dit-waiver" }}'>
+                <i class="far fa-circle nav-icon"></i>
+                <p>
+                    DIT Waivers
+                </p>
+            </a>
+        </li>
+        <li class="nav-item">
+            <a href="/soma/financial-audit/filter" class='nav-link {{ active .path "/soma/financial-audit/filter"}}'>
+                <i class="fa-solid fa-file-alt nav-icon"></i>
+                <p>Financial Audit</p>
+            </a>
+        </li>
+        {{end}}
+        {{if hasAnyRole .roles "Paperless Team" "ACO"}}
+        <li class="nav-item">
+            <a href="/soma/payment-allocation/filter"
+                class='nav-link {{ active .path "/soma/payment-allocation/filter"}}'>
+                <i class="fa-solid fa-coins nav-icon"></i>
+                <p>Payment Allocation</p>
+            </a>
+        </li>
+        <li class="nav-item">
+            <a href="/soma/payment-attachment/list" class='nav-link {{ active .path "/soma/payment-attachment/list"}}'>
+                <i class="fa-solid fa-paperclip nav-icon"></i>
+                <p>Payment Attachment</p>
+            </a>
+        </li>
+        <li class="nav-item">
+            <a href="/soma/payment-attachment/upload-prev-payment"
+                class='nav-link {{ active .path "/soma/payment-attachment/upload-prev-payment"}}'>
+                <i class="fa-solid fa-circle-left nav-icon"></i>
+                <p>Upload Previous Payments</p>
+            </a>
+        </li>
+        <li class="nav-item">
+            <a href="/soma/student-payment/list-failed-payment"
+                class='nav-link {{ active .path "/soma/student-payment/list-failed-payment"}}'>
+                <i class="fa-solid fa-circle-exclamation nav-icon"></i>
+                <p>Failed Payments</p>
+            </a>
+        </li>
+        <li class="nav-item">
+            <a href="/soma/fee-structure/list" class='nav-link {{ active .path "/soma/fee-structure/list" }}'>
+                <i class="far fa-circle nav-icon"></i>
+                <p>Fee Structure</p>
+            </a>
+        </li>
+        {{end}}
+        {{if hasAnyRole .roles "Paperless Team" }}
+        <li class="nav-item">
+            <a href="/soma/student-sponsorship/filter"
+                class='nav-link {{ active .path "/soma/student-sponsorship/filter"}}'>
+                <i class="fa-solid fa-dollar-sign nav-icon"></i>
+                <p>Student Sponsorship</p>
+            </a>
+        </li>
+        {{end}}
+        <li class="nav-item">
+            <a href="/soma/financial-report/index" class='nav-link {{ active .path "/soma/financial-report/index"}}'>
+                <i class="fa-solid fa-clapperboard nav-icon"></i>
+                <p>Financial Reports</p>
+            </a>
+        </li>
+    </ul>
+</li>
+{{end}}
+
+<!-- TCU Data -->
+{{if hasAnyRole .roles "HAO" "Registrar" "AO" "Helpdesk Master"}}
+<li class='nav-item has-treeview {{ menu .path
+            "/soma/tcu-data/index"
+            "/soma/tcu-data/tcu-failed-document"
+            }} '>
+    <a href="#" class='nav-link {{ active .path
+            "/soma/tcu-data/index"
+            "/soma/tcu-data/tcu-failed-document"
+                }}'>
+        <i class="fa-solid fa-share-from-square nav-icon"></i>
+        <p>
+            TCU Data
+            <i class="right fas fa-angle-left"></i>
+        </p>
+    </a>
+    <ul class="nav nav-treeview">
+        <li class="nav-item">
+            <a href="/soma/tcu-data/index" class='nav-link {{ active .path "/soma/tcu-data/index"}}'>
+                <i class="fa-solid fa-paper-plane nav-icon"></i>
+                <p>Send TCU Data</p>
+            </a>
+        </li>
+        <li class="nav-item">
+            <a href="/soma/tcu-data/tcu-failed-document"
+                class='nav-link {{ active .path "/soma/tcu-data/tcu-failed-document" }}'>
+                <i class="fa-solid fa-check-to-slot nav-icon"></i>
+                <p>Documents</p>
+            </a>
+        </li>
+    </ul>
+</li>
+{{end}}
+
+<!-- Postponement -->
+{{if hasAnyRole .roles "Registrar" "Paperless Team" "HOD" "Dean" "Doctor" "AO"}}
+<li class='nav-item has-treeview {{ menu .path
+    "/soma/postponement-exam/"
+    "/soma/postponement-reason/"
+    "/soma/postponement-response/"
+    "/soma/postponement-stage/"
+    "/soma/postponement-study/"
+    "/soma/postponement-supp/list"
+    "/soma/postponement-exam/hod" 
+    "/soma/postponement-supp/hod"
+    "/soma/postponement-study/hod"
+    "/soma/postponement-exam/dean" 
+    "/soma/postponement-supp/dean"
+    "/soma/postponement-study/dean"
+    "/soma/postponement-exam/doctor"
+    "/soma/postponement-supp/doctor"
+    "/soma/postponement-study/doctor"
+    }} '>
+    <a href="#" class='nav-link {{ active .path
+    "/soma/postponement-exam/"
+    "/soma/postponement-reason/"
+    "/soma/postponement-response/"
+    "/soma/postponement-stage/"
+    "/soma/postponement-study/"
+    "/soma/postponement-supp/list"
+    "/soma/postponement-exam/hod" 
+    "/soma/postponement-supp/hod"
+    "/soma/postponement-study/hod"
+    "/soma/postponement-exam/dean" 
+    "/soma/postponement-supp/dean"
+    "/soma/postponement-study/dean"
+    "/soma/postponement-exam/doctor"
+    "/soma/postponement-supp/doctor"
+    "/soma/postponement-study/doctor"
+    }}'>
+        <i class="fa-solid fa-user-clock nav-icon"></i>
+        <p>
+            Postponement
+            <i class="right fas fa-angle-left"></i>
+        </p>
+    </a>
+    <ul class="nav nav-treeview">
+        {{if hasAnyRole .roles "Registrar" "Paperless Team" "AO"}}
+        <li class="nav-item">
+            <a href="/soma/postponement-exam/list" class='nav-link {{ active .path "/soma/postponement-exam/list"}}'>
+                <i class="fa-solid fa-calendar-times nav-icon"></i>
+                <p>Postponement Exam</p>
+            </a>
+        </li>
+        <li class="nav-item">
+            <a href="/soma/postponement-supp/list" class='nav-link {{ active .path "/soma/postponement-supp/list"}}'>
+                <i class="fa-solid fa-calendar-times nav-icon"></i>
+                <p>SUPP Postponement </p>
+            </a>
+        </li>
+        <li class="nav-item">
+            <a href="/soma/postponement-study/registrar"
+                class='nav-link {{ active .path "/soma/postponement-study/registrar"}}'>
+                <i class="fa-solid fa-book nav-icon"></i>
+                <p>Postponement Study</p>
+            </a>
+        </li>
+        {{end}}
+
+        {{if hasAnyRole .roles "HOD" }}
+        <li class="nav-item">
+            <a href="/soma/postponement-exam/hod" class='nav-link {{ active .path "/soma/postponement-exam/hod"}}'>
+                <i class="fa-solid fa-calendar-times nav-icon"></i>
+                <p>Postponement Exam</p>
+            </a>
+        </li>
+        <li class="nav-item">
+            <a href="/soma/postponement-supp/hod" class='nav-link {{ active .path "/soma/postponement-supp/hod"}}'>
+                <i class="fa-solid fa-calendar-times nav-icon"></i>
+                <p>SUPP Postponement </p>
+            </a>
+        </li>
+        <li class="nav-item">
+            <a href="/soma/postponement-study/hod" class='nav-link {{ active .path "/soma/postponement-study/hod"}}'>
+                <i class="fa-solid fa-book nav-icon"></i>
+                <p>Postponement Study</p>
+            </a>
+        </li>
+        {{end}}
+
+        {{if hasAnyRole .roles "Dean" }}
+        <li class="nav-item">
+            <a href="/soma/postponement-exam/dean" class='nav-link {{ active .path "/soma/postponement-exam/dean"}}'>
+                <i class="fa-solid fa-calendar-times nav-icon"></i>
+                <p>Postponement Exam</p>
+            </a>
+        </li>
+        <li class="nav-item">
+            <a href="/soma/postponement-supp/dean" class='nav-link {{ active .path "/soma/postponement-supp/dean"}}'>
+                <i class="fa-solid fa-calendar-times nav-icon"></i>
+                <p>SUPP Postponement </p>
+            </a>
+        </li>
+        <li class="nav-item">
+            <a href="/soma/postponement-study/dean" class='nav-link {{ active .path "/soma/postponement-study/dean"}}'>
+                <i class="fa-solid fa-book nav-icon"></i>
+                <p>Postponement Study</p>
+            </a>
+        </li>
+        {{end}}
+
+        {{if hasAnyRole .roles "Doctor" }}
+        <li class="nav-item">
+            <a href="/soma/postponement-exam/doctor"
+                class='nav-link {{ active .path "/soma/postponement-exam/doctor"}}'>
+                <i class="fa-solid fa-calendar-times nav-icon"></i>
+                <p>Postponement Exam</p>
+            </a>
+        </li>
+        <li class="nav-item">
+            <a href="/soma/postponement-supp/doctor"
+                class='nav-link {{ active .path "/soma/postponement-supp/doctor"}}'>
+                <i class="fa-solid fa-calendar-times nav-icon"></i>
+                <p>SUPP Postponement </p>
+            </a>
+        </li>
+        <li class="nav-item">
+            <a href="/soma/postponement-study/doctor"
+                class='nav-link {{ active .path "/soma/postponement-study/doctor"}}'>
+                <i class="fa-solid fa-book nav-icon"></i>
+                <p>Postponement Study</p>
+            </a>
+        </li>
+        {{end}}
+        {{if hasAnyRole .roles "Paperless Team"}}
+        <li class="nav-item">
+            <a href="/soma/postponement-reason/list"
+                class='nav-link {{ active .path "/soma/postponement-reason/list" }}'>
+                <i class="far fa-circle nav-icon"></i>
+                <p>Postponement Reason</p>
+            </a>
+        </li>
+
+        <li class="nav-item">
+            <a href="/soma/postponement-stage/list" class='nav-link {{ active .path "/soma/postponement-stage/list"}}'>
+                <i class="fa-solid fa-step-forward nav-icon"></i>
+                <p>Postponement Stage</p>
+            </a>
+        </li>
+        {{end}}
+
+    </ul>
+</li>
+{{ end }}
+
+<!-- Students' Permission -->
+{{if hasAnyRole .roles "Registrar" "Paperless Team"}}
+<li class='nav-item has-treeview {{ menu .path
+    "/soma/next-offered-permission/list"
+    }} '>
+    <a href="#" class='nav-link {{ active .path
+     "/soma/next-offered-permission/list"
+        }}'>
+        <i class="fa-solid fa-key nav-icon"></i>
+        <p>
+            Student's Permissions
+            <i class="right fas fa-angle-left"></i>
+        </p>
+    </a>
+    <ul class="nav nav-treeview">
+        <li class="nav-item">
+            <a href="/soma/next-offered-permission/list"
+                class='nav-link {{ active .path "/soma/next-offered-permission/list"}}'>
+                <i class="fa-solid fa-book nav-icon"></i>
+                <p>Next Offered Permission</p>
+            </a>
+        </li>
+    </ul>
+</li>
+{{end}}
+
+<!-- Student Management -->
+{{if hasAnyRole .roles "HOD" "EC" "EO" "Paperless Team" "HAO" "AO" "Registrar" "IEC" "Helpdesk Master"
+"Internal Auditor" "DAC"}}
+<li class='nav-item has-treeview {{ menu .path
+            "/soma/admission-attachment/"
+            "/soma/student/list" 
+            "/soma/student/show/"
+            "/soma/student-kin/" 
+            "/soma/student-stream/"
+            "/soma/student-report/index"
+            "/soma/examination-attendance/create-attendance"
+            "/soma/student-status/student-incomplete-status"
+             }} '>
+    <a href="#" class='nav-link {{ active .path
+            "/soma/admission-attachment/"
+            "/soma/student/list"
+            "/soma/student-kin/" 
+            "/soma/student-stream/"
+            "/soma/student/show/"
+            "/soma/student-report/index"
+            "/soma/examination-attendance/create-attendance"
+            "/soma/student-status/student-incomplete-status"
+ }}'>
+        <i class="fa-solid fa-people-roof nav-icon"></i>
+        <p>
+            Student Management
+            <i class="right fas fa-angle-left"></i>
+        </p>
+    </a>
+    <ul class="nav nav-treeview">
+        <li class="nav-item">
+            <a href="/soma/student/list" class='nav-link {{ active .path "/soma/student/list" "/soma/student/show/"}}'>
+                <i class="fa-solid fa-user nav-icon"></i>
+                <p>Students</p>
+            </a>
+        </li>
+        {{if hasAnyRole .roles "HOD" "EC" "Paperless Team" "HAO" "AO" "Registrar" "IEC" "Helpdesk Master"}}
+        <li>
+            <a href="/soma/student-status/student-incomplete-status"
+                class='nav-link {{ active .path "/soma/student-status/student-incomplete-status"}}'>
+                <i class="fa-solid fa-user-large-slash nav-icon"></i>
+                <p>Incomplete Status Students</p>
+            </a>
+        </li>
+        {{end}}
+        {{if hasAnyRole .roles "Registrar" "IEC" "EO"}}
+        <li class="nav-item">
+            <a href="/soma/examination-attendance/create-attendance"
+                class='nav-link {{ active .path "   /soma/examination-attendance/create-attendance"}}'>
+                <i class="fa-solid fa-clapperboard nav-icon"></i>
+                <p>Examination Attendance</p>
+            </a>
+        </li>
+        {{end}}
+        {{if hasAnyRole .roles "Paperless Team" "Registrar" }}
+        <li class="nav-item">
+            <a href="/soma/student-kin/list" class='nav-link {{ active .path "/soma/student-kin/list"}}'>
+                <i class="fa-solid fa-users nav-icon"></i>
+                <p>Student Guardian</p>
+            </a>
+        </li>
+        <li class="nav-item">
+            <a href="/soma/student-stream/list" class='nav-link {{ active .path "/soma/student-stream/list"}}'>
+                <i class="fa-solid fa-stream nav-icon"></i>
+                <p>Student Stream</p>
+            </a>
+        </li>
+        {{end}}
+        {{if hasAnyRole .roles "Paperless Team"}}
+        <li class="nav-item">
+            <a href="/soma/student/list-deleted" class='nav-link {{ active .path "/soma/student/list-deleted"}}'>
+                <i class="fa-solid fa-trash-can nav-icon"></i>
+                <p>Deleted Students</p>
+            </a>
+        </li>
+        {{end}}
+        <li class="nav-item">
+            <a href="/soma/student-report/index" class='nav-link {{ active .path "/soma/student-report/index"}}'>
+                <i class="fa-solid fa-book-bookmark nav-icon"></i>
+                <p>Student Reports</p>
+            </a>
+        </li>
+    </ul>
+</li>
+{{end}}
+
+<!-- Student Status and Records -->
+{{if hasAnyRole .roles "Paperless Team" "Helpdesk Master" "Registrar"}}
+<li class='nav-item has-treeview {{ menu .path
+        "/soma/deceased/"
+        "/soma/discontinuation/"
+        "/soma/irregularity/"
+        "/soma/result-document/"
+        }} '>
+    <a href="#" class='nav-link {{ active .path
+        "/soma/deceased/"
+        "/soma/discontinuation/"
+        "/soma/irregularity/"
+        "/soma/result-document/"
+            }}'>
+        <i class="fa-solid fa-users-gear nav-icon"></i>
+        <p>
+            Student Status and Records
+            <i class="right fas fa-angle-left"></i>
+        </p>
+    </a>
+    <ul class="nav nav-treeview">
+        <li class="nav-item">
+            <a href="/soma/deceased/list" class='nav-link {{ active .path "/soma/deceased/list"}}'>
+                <i class="fa-solid fa-skull nav-icon"></i>
+                <p>Deceased</p>
+            </a>
+        </li>
+        <li class="nav-item">
+            <a href="/soma/discontinuation/list" class='nav-link {{ active .path "/soma/discontinuation/list"}}'>
+                <i class="fa-solid fa-ban nav-icon"></i>
+                <p>Discontinuation</p>
+            </a>
+        </li>
+        <li class="nav-item">
+            <a href="/soma/irregularity/list" class='nav-link {{ active .path "/soma/irregularity/list"}}'>
+                <i class="fa-solid fa-exclamation-triangle nav-icon"></i>
+                <p>Irregularity</p>
+            </a>
+        </li>
+        {{if hasAnyRole .roles "Paperless Team"}}
+        <li class="nav-item">
+            <a href="/soma/result-document/list" class='nav-link {{ active .path "/soma/result-document/list"}}'>
+                <i class="fa-solid fa-file nav-icon"></i>
+                <p>Result Document</p>
+            </a>
+        </li>
+        {{end}}
+    </ul>
+</li>
+{{end}}
+
+<!-- Staff Management -->
+{{if hasAnyRole .roles "Paperless Team" "HOD"}}
+<li class='nav-item has-treeview {{ menu .path
+        "/soma/staff/"
+        "/soma/staff-rank/"
+        "/soma/staff-responsibility/"
+        }} '>
+    <a href="#" class='nav-link {{ active .path
+         "/soma/staff/"
+        "/soma/staff-rank/"
+        "/soma/staff-responsibility/"
+            }}'>
+        <i class="far fa-circle nav-icon"></i>
+        <p>
+            Staff Management
+            <i class="right fas fa-angle-left"></i>
+        </p>
+    </a>
+    <ul class="nav nav-treeview">
+
+        {{if hasAnyRole .roles "HOD"}}
+        <li class="nav-item">
+            <a href="/soma/staff/list-per-department"
+                class='nav-link {{ active .path "/soma/staff/list-per-department"}}'>
+                <i class="fa-solid fa-user-tie nav-icon"></i>
+                <p>Staff</p>
+            </a>
+        </li>
+        {{end}}
+
+        {{if hasAnyRole .roles "Paperless Team" }}
+        <li class="nav-item">
+            <a href="/soma/staff/list" class='nav-link {{ active .path "/soma/staff/list"}}'>
+                <i class="fa-solid fa-user-tie nav-icon"></i>
+                <p>Staff</p>
+            </a>
+        </li>
+        <li class="nav-item">
+            <a href="/soma/staff-rank/list" class='nav-link {{ active .path "/soma/staff-rank/list" }}'>
+                <i class="far fa-circle nav-icon"></i>
+                <p>Staff Rank</p>
+            </a>
+        </li>
+        <li class="nav-item">
+            <a href="/soma/staff-responsibility/list"
+                class='nav-link {{ active .path "/soma/staff-responsibility/list" }}'>
+                <i class="far fa-circle nav-icon"></i>
+                <p>Staff Responsibility</p>
+            </a>
+        </li>
+        {{end}}
+    </ul>
+</li>
+{{end}}
+
+<!-- Programs and Modules -->
+{{if hasAnyRole .roles "HOD" "Paperless Team" "Staff" "CDTT" "EC"}}
+<li class='nav-item has-treeview {{ menu .path
+            "/soma/staff-class-module/"
+            "/soma/module/" 
+            "/soma/curriculum/"
+            }} '>
+    <a href="#" class='nav-link {{ active .path
+            "/soma/staff-class-module/"
+            "/soma/module/" 
+            "/soma/curriculum/"
+                }}'>
+        <i class="fa-solid fa-swatchbook nav-icon"></i>
+        <p>
+            Programs and Modules
+            <i class="right fas fa-angle-left"></i>
+        </p>
+    </a>
+    <ul class="nav nav-treeview">
+        {{if hasAnyRole .roles "Staff"}}
+        <li class="nav-item">
+            <a href="/soma/staff-class-module/index"
+                class='nav-link {{ active .path "/soma/staff-class-module/index"}}'>
+                <i class="fa-solid fa-chalkboard-teacher nav-icon"></i>
+                <p>Assigned Modules</p>
+            </a>
+        </li>
+        {{end}}
+        {{if hasAnyRole .roles "HOD" "CDTT" "EC"}}
+        <li class="nav-item">
+            <a href="/soma/program/per-department" class='nav-link {{ active .path "/soma/program/per-department" }}'>
+                <i class="far fa-dot-circle nav-icon"></i>
+                <p>Module Assignment</p>
+            </a>
+        </li>
+      
+        {{end}}
+        {{if hasAnyRole .roles "HOD" "CDTT" "EC" "Paperless Team"}}
+        <li class="nav-item">
+            <a href="/soma/curriculum/list" class='nav-link {{ active .path "/soma/curriculum/list" }}'>
+                <i class="far fa-circle nav-icon"></i>
+                <p>Curriculum</p>
+            </a>
+        </li>
+        {{end}} 
+        {{if hasAnyRole .roles "Paperless Team"}}
+        <li class="nav-item">
+            <a href="/soma/module/list" class='nav-link {{ active .path "/soma/module/list" }}'>
+                <i class="fas fa-box nav-icon"></i>
+                <p>Module</p>
+            </a>
+        </li>
+        {{end}}
+    </ul>
+</li>
+{{end}}
+
+<!-- Promotion -->
+{{if hasAnyRole .roles "HOD" "CDTT"}}
+<li class='nav-item has-treeview {{ menu .path
+            "/soma/class/active-class-per-department"
+            }} '>
+    <a href="#" class='nav-link {{ active .path
+            "/soma/class/active-class-per-department"
+                }}'>
+        <i class="fa-solid fa-swatchbook nav-icon"></i>
+        <p>
+Promotion            <i class="right fas fa-angle-left"></i>
+        </p>
+    </a>
+    <ul class="nav nav-treeview">
+     
+        {{if hasAnyRole .roles "HOD" "CDTT"}}
+       
+        <li class="nav-item">
+            <a href="/soma/class/active-class-per-department" class='nav-link {{ active .path "/soma/class/active-class-per-department" }}'>
+                <i class="far fa-dot-circle nav-icon"></i>
+                <p>Promotion</p>
+            </a>
+        </li>
+        {{end}}
+     
+    </ul>
+</li>
+{{end}}
+<!-- Academic Management -->
+{{if hasAnyRole .roles "Paperless Team" "Registrar"}}
+<li class='nav-item has-treeview {{ menu .path
+       "/soma/class-progress/"
+        "/soma/class-module/"
+        "/soma/curriculum-customized/"
+        "/soma/curriculum-group/"
+        "/soma/curriculum-module/"
+        "/soma/examination-attendance/"
+        "/soma/marks-upload-setting/" 
+        "/soma/promotion/"
+        "/soma/upload-semester-result/"
+        "/soma/semester-status/"
+        "/soma/supp-special-module/"
+        "/soma/publish/" 
+        }} '>
+    <a href="#" class='nav-link {{ active .path
+        "/soma/class-progress/"
+        "/soma/class-module/"
+        "/soma/curriculum-customized/"
+        "/soma/curriculum-group/"
+        "/soma/curriculum-module/"
+        "/soma/examination-attendance/"
+        "/soma/marks-upload-setting/" 
+        "/soma/promotion/"
+        "/soma/upload-semester-result/"
+        "/soma/semester-status/"
+        "/soma/supp-special-module/"
+        "/soma/publish/" 
+        }}'>
+
+        <i class="far fa-circle nav-icon"></i>
+        <p>
+            Academic Management
+            <i class="right fas fa-angle-left"></i>
+        </p>
+    </a>
+    <ul class="nav nav-treeview">
+        {{if hasAnyRole .roles "Registrar"}}
+        <li class="nav-item">
+            <a href="/soma/publish/list" class='nav-link {{ active .path "/soma/publish" }}'>
+                <i class="far fa-circle nav-icon"></i>
+                <p>Publish Results</p>
+            </a>
+        </li>
+
+        <li class="nav-item">
+            <a href="/soma/marks-upload-setting/list"
+                class='nav-link {{ active .path "/soma/marks-upload-setting/list"}}'>
+                <i class="fa-solid fa-upload nav-icon"></i>
+                <p>Marks Upload Setting</p>
+            </a>
+        </li>
+        {{end}}
+        {{if hasAnyRole .roles "Paperless Team"}}
+        <li class="nav-item">
+            <a href="/soma/class-progress/list" class='nav-link {{ active .path "/soma/class-progress/list"}}'>
+                <i class="fa-solid fa-chalkboard-teacher nav-icon"></i>
+                <p>Class Progress</p>
+            </a>
+        </li>
+        <li class="nav-item">
+            <a href="/soma/class-module/list" class='nav-link {{ active .path "/soma/class-module/list"}}'>
+                <i class="fa-solid fa-book nav-icon"></i>
+                <p>Class Module</p>
+            </a>
+        </li>
+        <li class="nav-item">
+            <a href="/soma/curriculum-customized/list"
+                class='nav-link {{ active .path "/soma/curriculum-customized/list"}}'>
+                <i class="fa-solid fa-book nav-icon"></i>
+                <p>Curriculum Customized</p>
+            </a>
+        </li>
+        <li class="nav-item">
+            <a href="/soma/curriculum-group/list" class='nav-link {{ active .path "/soma/curriculum-group/list"}}'>
+                <i class="fa-solid fa-layer-group nav-icon"></i>
+                <p>Curriculum Group</p>
+            </a>
+        </li>
+        <li class="nav-item">
+            <a href="/soma/curriculum-module/list" class='nav-link {{ active .path "/soma/curriculum-module/list"}}'>
+                <i class="fa-solid fa-book-reader nav-icon"></i>
+                <p>Curriculum Module</p>
+            </a>
+        </li>
+        <li class="nav-item">
+            <a href="/soma/examination-attendance/list"
+                class='nav-link {{ active .path "/soma/examination-attendance/list"}}'>
+                <i class="fa-solid fa-user-check nav-icon"></i>
+                <p>Examination Attendance</p>
+            </a>
+        </li>
+        <li class="nav-item">
+            <a href="/soma/promotion/list" class='nav-link {{ active .path "/soma/promotion/list"}}'>
+                <i class="fa-solid fa-rocket nav-icon"></i>
+                <p>Promotion</p>
+            </a>
+        </li>
+        <li class="nav-item">
+            <a href="/soma/upload-semester-result/create"
+                class='nav-link {{ active .path "/soma/upload-semester-result/create"}}'>
+                <i class="fa-solid fa-book nav-icon"></i>
+                <p>Upload Semester Results</p>
+            </a>
+        </li>
+        <li class="nav-item">
+            <a href="/soma/semester-status/list" class='nav-link {{ active .path "/soma/semester-status/list"}}'>
+                <i class="fa-solid fa-exclamation-circle nav-icon"></i>
+                <p>Semester Status</p>
+            </a>
+        </li>
+        <li class="nav-item">
+            <a href="/soma/supp-special-module/list"
+                class='nav-link {{ active .path "/soma/supp-special-module/list"}}'>
+                <i class="fa-solid fa-asterisk nav-icon"></i>
+                <p>Supp Special Module</p>
+            </a>
+        </li>
+        {{end}}
+    </ul>
+</li>
+{{end}}
+
+<!-- Results -->
+{{if hasAnyRole .roles "HOD" "EC" "EO" "Registrar" "Helpdesk Master" "DAC" "IEC"
+"Internal Auditor"}}
+<li class='nav-item has-treeview {{ menu .path
+            "/soma/exam-results/"
+            "/soma/program/per-department/module-result"
+            "/soma/student-result-statement/list"
+            "/soma/exam-upload-report/index"
+            }} '>
+    <a href="#" class='nav-link {{ active .path
+            "/soma/exam-results/"
+            "/soma/program/per-department/module-result" 
+            "/soma/student-result-statement/list"
+            "/soma/exam-upload-report/index"
+                }}'>
+        <i class="fa-solid fa-spell-check nav-icon"></i>
+        <p>
+            Results
+            <i class="right fas fa-angle-left"></i>
+        </p>
+    </a>
+    <ul class="nav nav-treeview">
+        {{if hasAnyRole .roles "HOD" "EC" "DAC" "IEC"}}
+        <li class="nav-item">
+            <a href="/soma/program/per-department/module-result"
+                class='nav-link {{ active .path "/soma/program/per-department/module-result"}}'>
+                <i class="fa-solid fa-check-double nav-icon"></i>
+                <p>Module Result</p>
+            </a>
+        </li>
+        {{end}}
+        <li class="nav-item">
+            <a href="/soma/exam-results/index" class='nav-link {{ active .path "/soma/exam-results/index" }}'>
+                <i class="fa-solid fa-check-to-slot nav-icon"></i>
+                <p>Semester Result</p>
+            </a>
+        </li>
+        <li class="nav-item">
+            <a href="/soma/exam-upload-report/index"
+                class='nav-link {{ active .path "/soma/exam-upload-report/index" }}'>
+                <i class="fa-solid fa-clapperboard nav-icon"></i>
+                <p>Examination Report</p>
+            </a>
+        </li>
+        {{if hasAnyRole .roles "IEC" "EO"}}
+        <li class="nav-item">
+            <a href="/soma/student-result-statement/list"
+                class='nav-link {{ active .path "/soma/student-result-statement/list" }}'>
+                <i class="fa-solid fa-file-lines nav-icon"></i>
+                <p>Result Statement</p>
+            </a>
+        </li>
+        {{end}}
+    </ul>
+</li>
+{{end}}
+
+<!-- Best Students -->
+{{if hasAnyRole .roles "Registrar" "HOD" "IEC" "EC" "EO"}}
+<li class='nav-item has-treeview {{ menu .path
+            "/soma/best-student/get-department" 
+            "/soma/best-student/overal-best-student"
+            }} '>
+    <a href="#" class='nav-link {{ active .path
+            "/soma/best-student/get-department" 
+            "/soma/best-student/overal-best-student"
+                }}'>
+        <i class="fa-solid fa-share-from-square nav-icon"></i>
+        <p>
+            Best Students
+            <i class="right fas fa-angle-left"></i>
+        </p>
+    </a>
+    <ul class="nav nav-treeview">
+        <li class="nav-item">
+            <a href="/soma/best-student/get-department"
+                class='nav-link {{ active .path "/soma/best-student/get-department"}}'>
+                <i class="fa-solid fa-shield nav-icon"></i>
+                <p>Results Per Module</p>
+            </a>
+        </li>
+        <li class="nav-item">
+            <a href="/soma/best-student/overal-best-student"
+                class='nav-link {{ active .path "/soma/best-student/overal-best-student" }}'>
+                <i class="fa-solid fa-check-to-slot nav-icon"></i>
+                <p>Overal Best Students</p>
+            </a>
+        </li>
+    </ul>
+</li>
+{{end}}
+
+<!-- Graduation -->
+{{if hasAnyRole .roles "Registrar" "HOD" "EC" "EO" "IEC"}}
+<li class='nav-item has-treeview {{ menu .path
+    "/soma/graduation/graduating-class"
+    "/soma/graduation-date/"
+    "/soma/graduation/"
+    "/soma/graduation-report/index"
+    "/soma/class/exit-class-by-academic-year"
+    }} '>
+    <a href="#" class='nav-link {{ active .path
+     "/soma/graduation/generate-graduation-list"
+     "/soma/graduation-date/"
+     "/soma/graduation/"
+     "/soma/graduation-report/index"
+     "/soma/class/exit-class-by-academic-year"
+        }}'>
+        <i class="fa-solid fa-graduation-cap nav-icon"></i>
+        <p>
+            Graduation
+            <i class="right fas fa-angle-left"></i>
+        </p>
+    </a>
+    <ul class="nav nav-treeview">
+        <li class="nav-item">
+            <a href="/soma/graduation/list" class='nav-link {{ active .path "/soma/graduation/list"}}'>
+                <i class="fa-solid fa-user-graduate nav-icon"></i>
+                <p>Graduants</p>
+            </a>
+        </li>
+        <li class="nav-item">
+            <a href="/soma/graduation/generate-graduation-list"
+                class='nav-link {{ active .path "/soma/graduation/generate-graduation-list"}}'>
+                <i class="fa-solid fa-users-rectangle nav-icon"></i>
+                <p>Graduating Classes</p>
+            </a>
+        </li>
+        <li class="nav-item">
+            <a href="/soma/graduation-report/index" class='nav-link {{ active .path "/soma/graduation-report/index"}}'>
+                <i class="fa-solid fa-book-bookmark nav-icon"></i>
+                <p>Graduation Reports</p>
+            </a>
+        </li>
+        {{if hasAnyRole .roles "IEC" }}
+        <li class="nav-item">
+            <a href="/soma/graduation-date/list" class='nav-link {{ active .path "/soma/graduation-date/list"}}'>
+                <i class="fa-regular fa-calendar-check nav-icon"></i>
+                <p>Graduation Date</p>
+            </a>
+        </li>
+        {{end}}
+        {{if hasAnyRole .roles "Paperless Team" }}
+        <li class="nav-item">
+            <a href="/soma/clearance/list" class='nav-link {{ active .path "/soma/clearance/list"}}'>
+                <i class="fas fa-check nav-icon"></i>
+                <p>Clearance</p>
+            </a>
+        </li>
+        {{end}}
+    </ul>
+</li>
+{{end}}
+
+<!-- FAQ -->
+{{if hasAnyRole .roles "Paperless Team"}}
+<li class='nav-item has-treeview {{ menu .path 
+            "/soma/faq-category/" 
+            "/soma/faq-question/" 
+             }}'>
+    <a href="#" class='nav-link {{ active .path 
+        "/soma/faq-category/" 
+        "/soma/faq-question/" 
+      }}'>
+        <i class="nav-icon fa-solid fa-question-circle"></i>
+        <p>
+            FAQ
+            <i class="right fas fa-angle-left"></i>
+        </p>
+    </a>
+    <ul class="nav nav-treeview">
+        <li class="nav-item">
+            <a href="/soma/faq-category/list" class='nav-link {{ active .path "/soma/faq-category/"}}'>
+                <i class="fa-solid fa fa-list-ul nav-icon"></i>
+                <p>
+                    FAQ Category
+                </p>
+            </a>
+        </li>
+        <li class="nav-item">
+            <a href="/soma/faq-question/list" class='nav-link {{ active .path "/soma/faq-question/"}}'>
+                <i class="fa-solid fa fa-question-circle nav-icon"></i>
+                <p>
+                    FAQ Question
+                </p>
+            </a>
+        </li>
+
+    </ul>
+</li>
+{{ end }}
+
+<!-- academic report -->
+{{if hasAnyRole .roles "Paperless Team" "EO"}}
+<li class='nav-item has-treeview {{ menu .path 
+            "/soma/module-result-report/" 
+             }}'>
+    <a href="#" class='nav-link {{ active .path 
+            "/soma/module-result-report/" 
+      }}'>
+        <i class="nav-icon fa-solid fa-question-circle"></i>
+        <p>
+            Reports
+
+            <i class="right fas fa-angle-left"></i>
+        </p>
+    </a>
+    <ul class="nav nav-treeview">
+        <li class="nav-item">
+            <a href="/soma/module-result-report/index" class='nav-link {{ active .path "/soma/module-result-report/index/"}}'>
+                <i class="fa-solid fa fa-list-ul nav-icon"></i>
+                <p>
+                   Academic Reports
+                </p>
+            </a>
+        </li>
+    
+
+    </ul>
+</li>
+{{ end }}
+
+<!-- Soma Settings -->
+{{if hasAnyRole .roles "Paperless Team" "Helpdesk Master"}}
+<li class='nav-item has-treeview {{ menu .path
+"/soma/academic-status/list"
+"/soma/academic-year/list"
+"/soma/attachment-type/list"
+"/soma/campus/list"
+"/soma/class/list"
+"/soma/continuity-status/list"
+"/soma/currency/list"
+"/soma/department/list"
+"/soma/disability/list"
+"/soma/discount-setting/list"
+"/soma/district/list"
+"/soma/fee-structure-item/list"
+"/soma/hod-department/list"
+"/soma/installment-setting/list"
+"/soma/kin-relationship/list"
+"/soma/marital-status/list"
+"/soma/module-category/list"
+"/soma/module-result-status/list"
+"/soma/module-result/list"
+"/soma/nationality/list"
+"/soma/nta-level/list"
+"/soma/payment-category/list"
+"/soma/payment-installment/list"
+"/soma/payment-item/list"
+"/soma/payment-source/list"
+"/soma/program-fee-structure/list"
+"/soma/program-type/list"
+"/soma/program/list"
+"/soma/region/list"
+"/soma/registrar/list"
+"/soma/registration-status/list"
+"/soma/scholarship/list"
+"/soma/semester/list"
+"/soma/setting/list"
+"/soma/sponsorship-type/list"
+"/soma/stream/list"
+"/soma/window-type/list"
+"/soma/setting-type/list"
+"/soma/window/" }}'>
+    <a href="#" class='nav-link {{ active .path
+"/soma/academic-status/list"
+"/soma/academic-year/list"
+"/soma/attachment-type/list"
+"/soma/campus/list"
+"/soma/class/list"
+"/soma/continuity-status/list"
+"/soma/currency/list"
+"/soma/department/list"
+"/soma/disability/list"
+"/soma/discount-setting/list"
+"/soma/district/list"
+"/soma/fee-structure-item/list"
+"/soma/hod-department/list"
+"/soma/installment-setting/list"
+"/soma/kin-relationship/list"
+"/soma/marital-status/list"
+"/soma/module-category/list"
+"/soma/module-result-status/list"
+"/soma/module-result/list"
+"/soma/nationality/list"
+"/soma/nta-level/list"
+"/soma/payment-category/list"
+"/soma/payment-installment/list"
+"/soma/payment-item/list"
+"/soma/payment-source/list"
+"/soma/program-fee-structure/list"
+"/soma/program-type/list"
+"/soma/program/list"
+"/soma/region/list"
+"/soma/registrar/list"
+"/soma/registration-status/list"
+"/soma/scholarship/list"
+"/soma/semester/list"
+"/soma/setting/list"
+"/soma/sponsorship-type/list"
+"/soma/stream/list"
+"/soma/window-type/list"
+"/soma/setting-type/list"
+"/soma/window/" }}'>
+        <i class="fa-solid fa-screwdriver-wrench nav-icon"></i>
+        <p>
+            Soma settings
+            <i class="right fas fa-angle-left"></i>
+        </p>
+    </a>
+    <ul class="nav nav-treeview">
+        {{if hasAnyRole .roles "Paperless Team"}}
+        <li class="nav-item">
+            <a href="/soma/academic-status/list" class='nav-link {{ active .path "/soma/academic-status/list" }}'>
+                <i class="far fa-circle nav-icon"></i>
+                <p>Academic Status</p>
+            </a>
+        </li>
+        <li class="nav-item">
+            <a href="/soma/academic-year/list" class='nav-link {{ active .path "/soma/academic-year/list" }}'>
+                <i class="far fa-circle nav-icon"></i>
+                <p>Academic Year</p>
+            </a>
+        </li>
+        <li class="nav-item">
+            <a href="/soma/attachment-type/list" class='nav-link {{ active .path "/soma/attachment-type/list" }}'>
+                <i class="far fa-circle nav-icon"></i>
+                <p>Attachment Type</p>
+            </a>
+        </li>
+        <li class="nav-item">
+            <a href="/soma/campus/list" class='nav-link {{ active .path "/soma/campus/list" }}'>
+                <i class="far fa-circle nav-icon"></i>
+                <p>Campus</p>
+            </a>
+        </li>
+        <li class="nav-item">
+            <a href="/soma/class/list" class='nav-link {{ active .path "/soma/class/list" }}'>
+                <i class="far fa-circle nav-icon"></i>
+                <p>Class</p>
+            </a>
+        </li>
+        <li class="nav-item">
+            <a href="/soma/continuity-status/list" class='nav-link {{ active .path "/soma/continuity-status/list" }}'>
+                <i class="far fa-circle nav-icon"></i>
+                <p>Continuity Status</p>
+            </a>
+        </li>
+        <li class="nav-item">
+            <a href="/soma/currency/list" class='nav-link {{ active .path "/soma/currency/list" }}'>
+                <i class="far fa-circle nav-icon"></i>
+                <p>Currency</p>
+            </a>
+        </li>
+        <li class="nav-item">
+            <a href="/soma/department/list" class='nav-link {{ active .path "/soma/department/list" }}'>
+                <i class="far fa-circle nav-icon"></i>
+                <p>Department</p>
+            </a>
+        </li>
+        <li class="nav-item">
+            <a href="/soma/disability/list" class='nav-link {{ active .path "/soma/disability/list" }}'>
+                <i class="far fa-circle nav-icon"></i>
+                <p>Disability</p>
+            </a>
+        </li>
+        <li class="nav-item">
+            <a href="/soma/discount-setting/list" class='nav-link {{ active .path "/soma/discount-setting/list" }}'>
+                <i class="far fa-circle nav-icon"></i>
+                <p>Discount Setting</p>
+            </a>
+        </li>
+        <li class="nav-item">
+            <a href="/soma/district/list" class='nav-link {{ active .path "/soma/district/list" }}'>
+                <i class="far fa-circle nav-icon"></i>
+                <p>District</p>
+            </a>
+        </li>
+        <li class="nav-item">
+            <a href="/soma/fee-structure-item/list" class='nav-link {{ active .path "/soma/fee-structure-item/list" }}'>
+                <i class="far fa-circle nav-icon"></i>
+                <p>Fee Structure Item</p>
+            </a>
+        </li>
+        <li class="nav-item">
+            <a href="/soma/hod-department/list" class='nav-link {{ active .path "/soma/hod-department/list" }}'>
+                <i class="far fa-circle nav-icon"></i>
+                <p>HOD Department</p>
+            </a>
+        </li>
+        <li class="nav-item">
+            <a href="/soma/installment-setting/list"
+                class='nav-link {{ active .path "/soma/installment-setting/list" }}'>
+                <i class="far fa-circle nav-icon"></i>
+                <p>Installment Setting</p>
+            </a>
+        </li>
+        <li class="nav-item">
+            <a href="/soma/kin-relationship/list" class='nav-link {{ active .path "/soma/kin-relationship/list" }}'>
+                <i class="far fa-circle nav-icon"></i>
+                <p>Kin Relationship</p>
+            </a>
+        </li>
+        <li class="nav-item">
+            <a href="/soma/marital-status/list" class='nav-link {{ active .path "/soma/marital-status/list" }}'>
+                <i class="far fa-circle nav-icon"></i>
+                <p>Marital Status</p>
+            </a>
+        </li>
+        <li class="nav-item">
+            <a href="/soma/module-category/list" class='nav-link {{ active .path "/soma/module-category/list" }}'>
+                <i class="fas fa-comments nav-icon"></i>
+                <p>Module Category</p>
+            </a>
+        </li>
+        <li class="nav-item">
+            <a href="/soma/module-result-status/list"
+                class='nav-link {{ active .path "/soma/module-result-status/list" }}'>
+                <i class="far fa-check-circle nav-icon"></i>
+                <p>Module Result Status</p>
+            </a>
+        </li>
+        <li class="nav-item">
+            <a href="/soma/nationality/list" class='nav-link {{ active .path "/soma/nationality/list" }}'>
+                <i class="far fa-circle nav-icon"></i>
+                <p>Nationality</p>
+            </a>
+        </li>
+        <li class="nav-item">
+            <a href="/soma/nta-level/list" class='nav-link {{ active .path "/soma/nta-level/list" }}'>
+                <i class="far fa-circle nav-icon"></i>
+                <p>NTA Level</p>
+            </a>
+        </li>
+        <li class="nav-item">
+            <a href="/soma/payment-category/list" class='nav-link {{ active .path "/soma/payment-category/list" }}'>
+                <i class="far fa-circle nav-icon"></i>
+                <p>Payment Category</p>
+            </a>
+        </li>
+        <li class="nav-item">
+            <a href="/soma/payment-installment/list"
+                class='nav-link {{ active .path "/soma/payment-installment/list" }}'>
+                <i class="far fa-circle nav-icon"></i>
+                <p>Payment Installment</p>
+            </a>
+        </li>
+        <li class="nav-item">
+            <a href="/soma/payment-item/list" class='nav-link {{ active .path "/soma/payment-item/list" }}'>
+                <i class="far fa-circle nav-icon"></i>
+                <p>Payment Item</p>
+            </a>
+        </li>
+        <li class="nav-item">
+            <a href="/soma/payment-source/list" class='nav-link {{ active .path "/soma/payment-source/list" }}'>
+                <i class="far fa-circle nav-icon"></i>
+                <p>Payment Source</p>
+            </a>
+        </li>
+        <li class="nav-item">
+            <a href="/soma/program-fee-structure/list"
+                class='nav-link {{ active .path "/soma/program-fee-structure/list" }}'>
+                <i class="far fa-circle nav-icon"></i>
+                <p>Program Fee Structure</p>
+            </a>
+        </li>
+        <li class="nav-item">
+            <a href="/soma/program-type/list" class='nav-link {{ active .path "/soma/program-type/list" }}'>
+                <i class="far fa-circle nav-icon"></i>
+                <p>Program Type</p>
+            </a>
+        </li>
+        <li class="nav-item">
+            <a href="/soma/program/list" class='nav-link {{ active .path "/soma/program/list" }}'>
+                <i class="far fa-circle nav-icon"></i>
+                <p>Program</p>
+            </a>
+        </li>
+        <li class="nav-item">
+            <a href="/soma/region/list" class='nav-link {{ active .path "/soma/region/list" }}'>
+                <i class="far fa-circle nav-icon"></i>
+                <p>Region</p>
+            </a>
+        </li>
+        <li class="nav-item">
+            <a href="/soma/registrar/list" class='nav-link {{ active .path "/soma/registrar/list" }}'>
+                <i class="far fa-circle nav-icon"></i>
+                <p>Registrar</p>
+            </a>
+        </li>
+        <li class="nav-item">
+            <a href="/soma/registration-status/list"
+                class='nav-link {{ active .path "/soma/registration-status/list" }}'>
+                <i class="far fa-circle nav-icon"></i>
+                <p>Registration Status</p>
+            </a>
+        </li>
+        <li class="nav-item">
+            <a href="/soma/scholarship/list" class='nav-link {{ active .path "/soma/scholarship/list" }}'>
+                <i class="far fa-circle nav-icon"></i>
+                <p>Scholarship</p>
+            </a>
+        </li>
+        <li class="nav-item">
+            <a href="/soma/setting-type/list" class='nav-link {{ active .path "/soma/setting-type/list" }}'>
+                <i class="far fa-circle nav-icon"></i>
+                <p>Setting Type</p>
+            </a>
+        </li>
+        <li class="nav-item">
+            <a href="/soma/semester/list" class='nav-link {{ active .path "/soma/semester/list" }}'>
+                <i class="far fa-circle nav-icon"></i>
+                <p>Semester</p>
+            </a>
+        </li>
+        <li class="nav-item">
+            <a href="/soma/setting/list" class='nav-link {{ active .path "/soma/setting/list" }}'>
+                <i class="far fa-circle nav-icon"></i>
+                <p>Setting</p>
+            </a>
+        </li>
+        <li class="nav-item">
+            <a href="/soma/sponsorship-type/list" class='nav-link {{ active .path "/soma/sponsorship-type/list" }}'>
+                <i class="far fa-circle nav-icon"></i>
+                <p>Sponsorship Type</p>
+            </a>
+        </li>
+        <li class="nav-item">
+            <a href="/soma/stream/list" class='nav-link {{ active .path "/soma/stream/list" }}'>
+                <i class="far fa-circle nav-icon"></i>
+                <p>Stream</p>
+            </a>
+        </li>
+        <li class="nav-item">
+            <a href="/soma/window-type/list" class='nav-link {{ active .path "/soma/window-type/list" }}'>
+                <i class="far fa-circle nav-icon"></i>
+                <p>Window Type</p>
+            </a>
+        </li>
+        {{end}}
+        {{if hasAnyRole .roles "Helpdesk Master"}}
+        <li class="nav-item">
+            <a href="/soma/window/list" class='nav-link {{ active .path "/soma/window/list" }}'>
+                <i class="far fa-circle nav-icon"></i>
+                <p>Window</p>
+            </a>
+        </li>
+        {{end}}
+    </ul>
+</li>
+{{end}}
+
+{{end}}

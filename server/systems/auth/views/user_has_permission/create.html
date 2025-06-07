@@ -1,0 +1,40 @@
+{{define "css"}}
+<!-- Select2 -->
+<link rel="stylesheet" href="/adminlte/plugins/select2/css/select2.min.css">
+{{ end }} 
+{{define "content"}}
+
+<div class="row" style="margin-top: -4rem;">
+    <div class="col-12">
+        <div class="callout callout-info">
+            <h4 class="my-1 mb-3 float-left"><i class="fa-solid fa-user-gear text-primary text-small"></i>&nbsp; {{.title}} For <b>{{.userDetails.Name}}</b>
+            </h4>
+            <div class="btn-group btn-group-sm float-right mt-2" role="group">
+                <div class="btn-group btn-group-sm float-right" role="group">
+                    <a href="/auth/users/list" class="btn btn-primary" title="List All">
+                        <i class=" fas fa-fw fa-th-list text-white" aria-hidden="true"></i>
+                    </a>
+                </div>
+            </div>
+            <br><br>
+        </div>
+    </div>
+</div>
+
+<div class="card">
+
+    <div class="card-body">
+        <form action="/auth/user-permissions/store" method="post" class="form">
+            {{include "auth/views/user_has_permission/form"}}
+
+        </form>
+    </div>
+    <!-- /.card-body -->
+</div>
+<!-- /.card -->
+
+{{end}} {{define "js"}}
+<!-- Select2 -->
+
+ 
+{{ end }}

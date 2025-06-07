@@ -1,0 +1,54 @@
+<input type="hidden" name="csrf" value="{{ .csrf }}">
+<input type="hidden" name="id" value="{{ .data.ID}}">
+<div class="form-row">
+    <div class="form-group col-md-6">
+        <label class="control-label">Name<span style="color:red">*</span> </label>
+        <input type="input" name="name" class="form-control" aria-describedby="Name" required placeholder="Name" value="{{ .data.Name }}">
+    </div>
+    <div class="form-group col-md-6">
+        <label class="control-label">Code<span style="color:red">*</span> </label>
+        <input type="input" name="code" class="form-control" aria-describedby="Code" required placeholder="Code" value="{{ .data.Code }}">
+    </div>
+</div>
+<div class="form-row">
+    <div class="form-group col-md-6">
+        <label class="control-label">IP Address<span style="color:red">*</span> </label>
+        <input type="input" name="ip_address" class="form-control" aria-describedby="IPAddress" required placeholder="IP Address" value="{{ .data.IPAddress }}">
+    </div>
+    <div class="form-group col-md-6">
+        <label class="control-label">Domain<span style="color:red">*</span> </label>
+        <input type="input" name="domain" class="form-control" aria-describedby="Domain" required placeholder="Domain" value="{{ .data.Domain }}">
+    </div>
+</div>
+<div class="form-row">
+    <div class="form-group col-md-12">
+        <label class="control-label">Port<span style="color:red">*</span> </label>
+        <input type="input" name="port" class="form-control" aria-describedby="Port" required placeholder="Port" value="{{ .data.Port }}">
+    </div>
+</div>
+<div class="form-row">
+    <div class="form-group col-md-12">
+        <label class="control-label">Description<span style="color:red">*</span> </label>
+        <input type="input" name="description" class="form-control" aria-describedby="Description" required placeholder="Description" value="{{ .data.Description }}">
+    </div>
+</div>
+<div class="form-row">
+    <div class="form-group  col-md-12">
+        <label class="control-label">Active?<span style="color:red">*</span> </label>
+        <select name="active" class="form-control" required>
+            <option  value="{{ .data.Active }}" > {{ .data.Active }} </option>
+            <option value="True">True</option>
+            <option value="False">False</option>
+        </select>
+    </div>
+</div>{{if .data}}
+<div class="form-group">
+    <div class="col-md-12">
+        <button type="submit" class="btn btn-info btn-block">Update</button>
+    </div>
+</div>{{else}}
+<div class="form-group">
+    <div class="col-md-12">
+        <button type="submit" class="btn btn-info btn-block">Create</button>
+    </div>
+</div>{{end}}

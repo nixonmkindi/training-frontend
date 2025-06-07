@@ -1,0 +1,89 @@
+<div class="card" style="margin-top: -2.7rem;">
+    <div class="card-header">
+        <h5 class="my-1 float-left">All Student Users
+        </h5> 
+    </div>
+    <div class="card-body">
+        <table id="studentDatatable" class="table table-bordered table-striped">
+            <thead>
+                <tr>
+                    <th>S/no</th>
+                    <th>Name</th>
+                    <th>Registration No</th>
+                    <th>Email Address</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                {{$allRoles := .roles}}
+                {{range $index, $value := .data}}
+                <tr>
+                    <td scope="row">{{add $index 1}}</td>
+                    <td>{{$value.Name}}</td>
+                    <td>{{$value.UniqueID}}</td>
+                    <td>{{$value.Email}}</td>
+                    <td>
+                        <div class="btn-group btn-group-sm float-right" role="group">
+                            <form action="/auth/users/show" method="post">
+                                <input type="hidden" name="id" value="{{ $value.ID }}">
+                                <button type="submit" class="btn btn-info btn-sm" title="Show">
+                                    <i class=" fas fa-fw fa-eye" aria-hidden="true"></i>
+                                </button>
+                            </form>
+                            {{if hasAnyRole $allRoles "Admin "}}
+                            <form action="/auth/users/edit" method="post">
+                                <input type="hidden" name="id" value="{{ $value.ID }}">
+                                <button class="btn btn-primary btn-sm mr-1 ml-1" title="Update">
+                                    <i class=" fas fa-fw fa-pencil-alt fa-sm" aria-hidden="true"></i>
+                                </button>
+                            </form>
+                            <form action="/auth/users/delete" method="post">
+                                <input type="hidden" name="id" value="{{ $value.ID }}">
+                                <button class="btn btn-danger btn-sm" title="Delete"
+                                onclick="return confirm('Are you sure?')">
+                                    <i class=" fas fa-fw fa-trash fa-sm" aria-hidden="true"></i>
+                                </button>
+                            </form>
+                            <form action="/auth/user-permissions/list" method="post">
+                                <input type="hidden" name="id" value="{{ $value.ID }}">
+                                <button class="btn btn-primary btn-sm mr-1 ml-1" title="Permissions">
+                                    <i class=" fas fa-fw fa-list fa-sm" aria-hidden="true"></i>
+                                </button>
+                            </form>
+                            {{end}}
+                            <form action="/auth/user-roles/list" method="post">
+                                <input type="hidden" name="id" value="{{ $value.ID }}">
+                                <button class="btn btn-secondary btn-sm" title="Roles">
+                                    <i class=" fas fa-fw fa-flag fa-sm" aria-hidden="true"></i>
+                                </button>
+                            </form>
+                            {{if hasAnyRole $allRoles "Admin "}}
+                            <form action="/auth/password-reset" method="post">
+                                <input type="hidden" name="id" value="{{ $value.ID }}">
+                                <button class="btn btn-primary btn-sm ml-1" title="Reset Password">
+                                    <i class="fa-solid fa-key  fa-sm" aria-hidden="true"></i>
+                                </button>
+                            </form>
+                            {{end}}
+
+                        </div>
+
+                    </td>
+                </tr>
+
+                {{end}}
+
+            </tbody>
+        </table>
+    </div>
+    <!-- /.card-body -->
+</div>
+<!-- page script -->
+<script>
+    $(function () {
+        $("#studentDatatable").DataTable({
+            "responsive": true,
+            "autoWidth": false,
+        });
+    });
+</script>

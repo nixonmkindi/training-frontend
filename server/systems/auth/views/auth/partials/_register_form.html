@@ -1,0 +1,60 @@
+<div class="input-group mb-3">
+  <input type="text" name="unique_id" class="form-control" placeholder="Check Number" required>
+  <div class="input-group-append">
+    <div class="input-group-text">
+      <span class="fas fa-info-circle"></span>
+    </div>
+  </div>
+</div>
+
+<div class="input-group mb-3">
+  <input type="text" name="email" class="form-control" placeholder="Email Address" required>
+  <div class="input-group-append">
+    <div class="input-group-text">
+      <span class="fas fa-envelope"></span>
+    </div>
+  </div>
+</div>
+
+
+<div class="input-group mb-3" id="passwordInput">
+  <input type="password" name="password" id="password" class="form-control" placeholder="Password" required>
+  <div class="input-group-append">
+    <div class="input-group-text">
+      <span class="fas fa-eye-slash" id="togglePassword" style="cursor: pointer;"></span>
+    </div>
+  </div>
+</div>
+<div id="passwordStrength">
+  <span id="poor"></span>
+  <span id="weak"></span>
+  <span id="strong"></span>
+</div>
+<div id="passwordInfo"></div>
+
+<div class="input-group">
+  <input type="password" id="confirm_password" name="confirm_password" class="form-control"
+    placeholder="Retype password" required>
+  <div class="input-group-append">
+    <div class="input-group-text">
+      <span class="fas fa-eye-slash" id="toggleRepeatPassword" style="cursor: pointer;"></span>
+    </div>
+  </div>
+</div>
+<small id="confirmPassword-feedback"></small>
+<div class="row mt-3">
+  <div class="col-8">
+    <div class="icheck-primary">
+      <input type="checkbox" id="agreeTerms" name="terms" value="agree">
+      <label for="agreeTerms">
+        I agree to the <a href="#">terms</a>
+      </label>
+    </div>
+  </div>
+  <!-- /.col -->
+  <div class="col-4">
+    <button type="submit" class="btn btn-block" id="sign-u" style="background-color:#315c72 !important"><span
+        style="color:white;">Register</button>
+  </div>
+  <!-- /.col -->
+</div>

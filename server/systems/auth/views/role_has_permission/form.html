@@ -1,0 +1,47 @@
+<input type="hidden" name="csrf" value="{{ .csrf }}">
+<input type="hidden" name="ID" value="{{ .roleID }}">
+{{ $i := .rolePermissions }}
+
+<table id="datatable" class="table table-bordered table-striped">
+    <thead>
+    <tr>
+        <th>Checked Permissions</th>
+        <th>Path</th>
+    </tr>
+    </thead>
+    <tbody>
+    {{ $currentGroup := "" }}
+    {{ range $value := .allPermissions }}
+    {{ $groupSlice := split $value.Path "/" }}
+    {{ if ge (len $groupSlice) 3 }}
+    {{ $group := index $groupSlice 2 }}
+    {{ if ne $currentGroup $group }}
+    {{ $currentGroup = $group }}
+    <tr class="group-row">
+        <td colspan="2">
+            <input type="checkbox" class="group-check" data-group="{{ $group }}" id="{{ $group }}" />
+            <label for="{{ $group }}">{{ $group }}</label>
+        </td>
+    </tr>
+    {{ end }}
+    <tr class="{{ $group }}-group">
+        <td>
+            <div class="form-check form-check-inline">
+                <input class="form-check-input sub-check" data-group="{{ $group }}" name="permission" type="checkbox" id="inlineCheckbox{{ $value.ID }}"
+                       value="{{ $value.ID }}" {{ if hasPermission $i $value.ID }} checked {{ end }}>
+            </div>
+        </td>
+        <td>
+            <label class="form-check-label" for="inlineCheckbox{{ $value.ID }}">{{ $value.Path }}</label>
+        </td>
+    </tr>
+    {{ end }}
+    {{ end }}
+    </tbody>
+</table>
+
+<div class="form-group">
+    <div class="col-md-12">
+        <button type="submit" class="btn btn-info btn-block">Create</button>
+    </div>
+</div>

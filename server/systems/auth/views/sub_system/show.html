@@ -1,0 +1,99 @@
+{{define "css"}}
+<!-- DataTables js-->
+<link rel="stylesheet" href="/adminlte/plugins/datatables-bs4/css/dataTables.bootstrap4.min.css">
+<link rel="stylesheet" href="/adminlte/plugins/datatables-responsive/css/responsive.bootstrap4.min.css"> {{ end }}
+{{define "content"}}
+ 
+<div class="row" style="margin-top: -4rem;">
+    <div class="col-12">
+        <div class="callout callout-info">
+            <h4 class="my-1 mb-3 float-left"><i class="fa-solid fa-user-gear text-primary text-small"></i>&nbsp;
+                Details for Subsystem <b>{{.data.Name}}</b>
+            </h4>
+            <div class="btn-group btn-group-sm float-right" role="group">
+                <a href="/auth/subsystems/list" class="btn btn-info mr-2" title="List All" style="text-decoration: none; color: white;">
+                    <i class=" fas fa-fw fa-th-list" aria-hidden="true"></i> List All
+                </a>
+
+                <a href="/auth/subsystems/create" class="btn btn-success" title="Add New" style="text-decoration: none; color: white;">
+                    <i class=" fas fa-fw fa-plus" aria-hidden="true"></i> Add Subsystem
+                </a>
+            </div>
+            <br><br>
+        </div>
+    </div>
+</div>
+ 
+<div class="row">
+    <div class="col-md-5 col-sm-12">
+        <div class="card">
+            <div class="card-body">
+                <table class="table table-sm p-2 table-bordered">
+                    <tr>
+                        <th colspan="2">Subsystem Information
+                            <div class="btn-group btn-group-sm float-right" role="group">
+                            </div>
+                        </th>
+                    </tr>
+                    <tbody>
+                        <tr>
+                            <td>Name</td>
+                            <td>{{ .data.Name}}</td>
+                        </tr>
+                        <tr>
+                            <td>Code</td>
+                            <td><span class="badge bg-primary">{{
+                                    .data.Code}}</span></td>
+                        </tr>
+                        <tr>
+                            <td>IP Address</td>
+                            <td>{{ .data.IPAddress}}</td>
+                        </tr>
+                        <tr>
+                            <td>Domain</td>
+                            <td><span class="badge bg-info">{{
+                                    .data.Domain}}</span></td>
+                        </tr>
+                        <tr>
+                            <td>Port</td>
+                            <td>{{ .data.Port}}</td>
+                        </tr>
+                        <tr>
+                            <td>Active</td>
+                            <td>{{if .data.Active}} 
+                                <span class="badge badge-success">Yes</span> 
+                                {{ else }}
+                                <span class="badge badge-danger">No</span>
+                                {{end}}
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Created At</td>
+                            <td>{{ timestamp .data.CreatedAt}}</td>
+                        </tr>
+
+                    </tbody>
+                </table>
+            </div>
+            <!-- /.card-body -->
+        </div>
+    </div>
+</div>
+
+<!-- /.card -->
+{{end}} {{ define "js"}}
+<!-- DataTables -->
+<script src="/adminlte/plugins/datatables/jquery.dataTables.min.js"></script>
+<script src="/adminlte/plugins/datatables-bs4/js/dataTables.bootstrap4.min.js"></script>
+<script src="/adminlte/plugins/datatables-responsive/js/dataTables.responsive.min.js"></script>
+<script src="/adminlte/plugins/datatables-responsive/js/responsive.bootstrap4.min.js"></script>
+<!-- page script -->
+<script>
+    $(function () {
+        $("#datatable").DataTable({
+            "responsive": true,
+            "autoWidth": false,
+        });
+    });
+</script>
+{{end}}

@@ -1,0 +1,35 @@
+{{define "css"}}
+<!-- iCheck for checkboxes and radio inputs -->
+ <link rel="stylesheet" href="/adminlte/plugins/icheck-bootstrap/icheck-bootstrap.min.css"> 
+{{ end }}  
+{{define "content"}}
+<div class="row" style="margin-top: -4rem;">
+    <div class="col-12">
+        <div class="callout callout-info">
+            <h4 class="my-1 mb-3 float-left"><i class="fa-solid fa-user-gear text-primary text-small"></i>&nbsp;
+                Update
+            </h4>
+            <div class="btn-group btn-group-sm float-right mt-2" role="group">
+                <a href="/auth/roles/list" class="btn btn-primary" title="List All" style="text-decoration: none;">
+                    <i class=" fas fa-fw fa-th-list text-white" aria-hidden="true"></i><span class="text-white">List all Roles</span>
+                </a>
+            </div>
+            <br><br>
+        </div>
+    </div>
+</div>
+
+<div class="card">
+    <div class="card-body">
+        <div class="col-md-12">
+            <form action="/auth/roles/update" method="post" class="form">
+                {{include "auth/views/role/form"}}
+
+            </form>
+
+        </div>
+    </div>
+    <!-- /.card-body -->
+</div>
+<!-- /.card -->
+{{end}} {{define "js"}} {{ end }}

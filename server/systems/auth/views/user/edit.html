@@ -1,0 +1,40 @@
+{{define "css"}}
+<!-- iCheck for checkboxes and radio inputs -->
+<link rel="stylesheet" href="/adminlte/plugins/icheck-bootstrap/icheck-bootstrap.min.css">
+{{ end }}
+{{define "content"}}
+<div class="container-fluid" style="margin-top: -4rem;">
+    <div class="row">
+        <div class="col-12">
+            <div class="callout callout-info">
+                <h3 class="my-1 mb-3 float-left"><i class="fa-solid fa-user text-primary"></i>&nbsp;Edit User
+                </h3>
+                <br><br>
+            </div>
+        </div>
+    </div>
+    <div class="card">
+        <div class="card-header">
+            <h3 class="my-1 float-left"><i class="fas fa-info-circle text-info"></i>Update </h3>
+            <div class="btn-group btn-group-sm float-right" role="group">
+                <a href="/auth/users/list" class="btn btn-info" title="List All">
+                    <i class=" fas fa-fw fa-th-list" aria-hidden="true"></i>
+                </a>
+            </div>
+        </div>
+        <!-- /.card-header -->
+
+        <div class="card-body">
+            <div class="col-md-12">
+                <form action="/auth/users/update" method="post" class="form">
+                    {{include "auth/views/user/forms/edit"}}
+
+                </form>
+
+            </div>
+        </div>
+        <!-- /.card-body -->
+    </div>
+</div>
+<!-- /.card -->
+{{end}} {{define "js"}} {{ end }}

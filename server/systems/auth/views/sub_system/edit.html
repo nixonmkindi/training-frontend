@@ -1,0 +1,33 @@
+{{define "css"}}
+<!-- iCheck for checkboxes and radio inputs -->
+ <link rel="stylesheet" href="/adminlte/plugins/icheck-bootstrap/icheck-bootstrap.min.css"> 
+{{ end }}  
+{{define "content"}}
+ 
+<div class="row" style="margin-top: -3rem;">
+    <div class="col-12">
+        <div class="callout callout-info">
+            <h3 class="my-1 mb-3 float-left"><i class="fa-solid fa-users text-primary text-small"></i>&nbsp;Update {{ .data.Name }}</h3>
+            <div class="btn-group btn-group-sm float-right mt-2" role="group">
+                <a href="/auth/subsystems/list" class="btn btn-primary" title="Add New" style="text-decoration: none; color: white;">
+                    <i class=" fas fa-fw fa-list text-white" aria-hidden="true"></i> List All
+                </a>
+            </div>
+            <br><br>
+        </div>
+    </div>
+</div>
+<div class="card">
+    <div class="card-body">
+        <div class="col-md-12">
+            <form action="/auth/subsystems/update" method="post" class="form">
+                {{include "auth/views/sub_system/form"}}
+
+            </form>
+
+        </div>
+    </div>
+    <!-- /.card-body -->
+</div>
+<!-- /.card -->
+{{end}} {{define "js"}} {{ end }}

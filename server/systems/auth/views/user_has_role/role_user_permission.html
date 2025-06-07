@@ -1,0 +1,134 @@
+{{define "css"}}
+<!-- DataTables js-->
+<link rel="stylesheet" href="/adminlte/plugins/datatables-bs4/css/dataTables.bootstrap4.min.css">
+<link rel="stylesheet" href="/adminlte/plugins/datatables-responsive/css/responsive.bootstrap4.min.css"> {{ end }}
+{{define "content"}}
+<div class="row" style="margin-top: -4rem;">
+    <div class="col-12">
+        <div class="callout callout-info">
+            <h4 class="my-1 mb-3 float-left"><i class="fa-solid fa-user-gear text-primary text-small"></i>&nbsp; All
+                Users and Permission for Role <b>{{.data.Role.Name}}</b>
+            </h4>
+            <br><br>
+        </div>
+    </div>
+</div>
+
+
+<div class="card">
+    <!-- /.card-header -->
+    <div class="card-header">
+        <h5 class="my-1 float-left"><i class="fa-solid fa-person-through-window mr-2 text-primary text-small"></i><b>Users & Permissions</b>
+        </h5>
+    </div>
+    <div class="card-body">
+        <div class="card">
+            <div class="card-header">
+                <h5 class="my-1 float-left"><i class="fa-solid fa-users mr-2 text-primary text-small"></i><b>Users</b>
+                </h5>
+            </div>
+            <div class="card-body">
+                <table id="datatable" class="table table-bordered table-striped">
+                    <thead>
+                        <tr>
+                            <th>S/N</th>
+                            <th>Name</th>
+                            <th>Email</th>
+                            <th>Unique ID</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {{ range $index, $value := .data.User }}
+                        <tr>
+                            <td scope="row">{{ add $index 1 }}</td>
+                            <td>{{ $value.Name }}</td>
+                            <td>{{ $value.Email }}</td>
+                            <td>{{ $value.UniqueID }}</td>
+                            <td>
+                                <div class="btn-group btn-group-sm float-right" role="group">
+                                    <form action="/auth/user-roles/show" method="post">
+                                        <input type="hidden" name="id" value="{{ $value.ID }}">
+                                        <button type="submit" class="btn btn-info btn-sm" title="Show">
+                                            <i class=" fas fa-fw fa-eye" aria-hidden="true"></i>
+                                        </button>
+                                    </form>
+                                </div>
+                            </td>
+                        </tr>
+
+                        {{ end }}
+
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="card-header">
+                <h5 class="my-1 float-left"> <i class="fa-solid fa-person-walking-dashed-line-arrow-right text-primary mr-2"></i> <b>Permissions</b>
+                </h5>
+            </div>
+            <div class="card-body">
+                <table id="permissionDatatable" class="table table-bordered table-striped">
+                    <thead>
+                        <tr>
+                            <th>S/N</th>
+                            <th>Path</th>
+                            <th>Method</th>
+                            <th>Service</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {{ range $index, $value := .data.Permission }}
+                        <tr>
+                            <td scope="row">{{ add $index 1 }}</td>
+                            <td>{{ $value.Path }}</td>
+                            <td>{{$value.Method}}</td>
+                            <td>{{$value.Service}}</td>
+                            <td>
+                                <div class="btn-group btn-group-sm float-right" role="group">
+                                    <form action="/auth/user-roles/show" method="post">
+                                        <input type="hidden" name="id" value="{{ $value.ID }}">
+                                        <button type="submit" class="btn btn-info btn-sm" title="Show">
+                                            <i class=" fas fa-fw fa-eye" aria-hidden="true"></i>
+                                        </button>
+                                    </form>
+                                </div>
+                            </td>
+                        </tr>
+
+                        {{ end }}
+
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+    <!-- /.card-body -->
+</div>
+<!-- /.card -->
+{{ end }} {{ define "js"}}
+<!-- DataTables -->
+<script src="/adminlte/plugins/datatables/jquery.dataTables.min.js"></script>
+<script src="/adminlte/plugins/datatables-bs4/js/dataTables.bootstrap4.min.js"></script>
+<script src="/adminlte/plugins/datatables-responsive/js/dataTables.responsive.min.js"></script>
+<script src="/adminlte/plugins/datatables-responsive/js/responsive.bootstrap4.min.js"></script>
+<!-- page script -->
+<script>
+    $(function () {
+        $("#datatable").DataTable({
+            "responsive": true,
+            "autoWidth": false,
+        });
+    });
+    $(function () {
+        $("#permissionDatatable").DataTable({
+            "responsive": true,
+            "autoWidth": false,
+        });
+    });
+</script>
+
+{{end}}

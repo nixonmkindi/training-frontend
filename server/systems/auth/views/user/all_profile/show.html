@@ -1,0 +1,49 @@
+{{define "css"}}
+
+{{ end }}
+{{define "content"}}
+<div class="container-fluid" style="margin-top: -4rem;">
+    <div class="row mb-3">
+        <div class="col-12">
+            <div class="callout callout-info">
+                <h5 class="my-1 mb-3 float-left mt-2"><i class="fa-solid fa-people-line text-primary"></i>&nbsp;View all User's Profile
+                </h5>
+                <br><br>
+            </div>
+        </div>
+    </div>
+    <div class="card">
+        <div class="card-header">
+            <h5 class="my-1 float-left"><i class="fas fa-info-circle text-info text-small"></i>&nbsp;User Profiles
+            </h5>
+        </div>
+
+        <div class="card-body">
+            <form action="/auth/users/show" method="post" class="form">
+                <div class="form-row">
+                    <div class="col-12 col-md-6">
+                        <div class="form-group">
+                            <label for="User">Select User</label>
+                            <select id="id" name="id" class="form-control select2" style="width: 100%;">
+                                <option value="">Select User</option>
+                                {{ range $key, $value:= .users}}
+                                <option value="{{$value.ID}}">{{$value.Name}} - ({{$value.Email}}) - ({{$value.UniqueID}})</option>
+                                {{end}}
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group col-md-4" style="margin-top: 2.2rem;">
+                        <button type="submit" class="btn btn-primary btn-sm">View Profile</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+        <!-- /.card-body -->
+    </div>
+    <!-- /.card -->
+</div>
+{{end}}
+
+{{define "js"}}
+
+{{ end }}

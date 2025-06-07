@@ -1,0 +1,119 @@
+{{define "css"}}
+<!-- css yield here -->
+<link rel="stylesheet" href="/adminlte/landing/css/landing.css">
+<link rel="stylesheet" href="/adminlte/dist/css/double_ring_loader.css">
+<style>
+    .nav-tabs .nav-link.active {
+        background-color: #F2F2F2;
+        border-color: lightsteelblue;
+    }
+</style>
+<style>
+    .styled-table {
+        border-collapse: collapse;
+        margin: 25px 0;
+        font-size: 0.9em;
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        width: 100%;
+        box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+    }
+
+    .styled-table thead tr {
+        background-color: #009879;
+        color: #ffffff;
+        text-align: left;
+    }
+
+    .styled-table th,
+    .styled-table td {
+        padding: 12px 15px;
+        border: 1px solid #ddd;
+
+    }
+
+    .styled-table tbody tr {
+        border-bottom: 1px solid #dddddd;
+    }
+
+    .styled-table tbody tr:nth-of-type(even) {
+        background-color: #f3f3f3;
+    }
+
+    .styled-table tbody tr:last-of-type {
+        border-bottom: 2px solid #009879;
+    }
+
+    .center {
+        text-align: center;
+    }
+
+    .message-box {
+        color: #E74C3C;
+        font-size: 16px;
+        font-weight: bold;
+        padding: 10px;
+        border-radius: 5px;
+        text-align: center;
+        margin-top: 10px;
+    }
+
+    .high-rate {
+        background-color: #d4edda;
+        /* Light Green */
+    }
+
+    .medium-rate {
+        background-color: #fff3cd;
+        /* Light Yellow */
+    }
+
+    .low-rate {
+        background-color: #f8d7da;
+    }
+</style>
+{{ end }}
+{{define "content"}}
+
+<!-- content yield here -->
+<!-- Neumorphic cards here -->
+<div class="container-fluid" style="margin-top: -4rem;">
+    <div class="row">
+        <div class="col-12 mt-2">
+            <div class="callout callout-info">
+                <h3 class="my-1 mb-3 float-left h3 text-bold"><img src="/images/dit-logo.png" alt="DIT"
+                        class="brand-image img-circle elevation-1 mr-2" style="opacity: .8; width:40px;">TRAINING
+                    FRONTEND
+                </h3><br><br>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+{{end}}
+
+{{define "js"}}
+<!-- jQuery -->
+<script src="/adminlte/plugins/jquery/jquery.min.js"></script>
+<!-- Bootstrap 4 -->
+<script src="/adminlte/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+<script>
+    $(function () {
+        // Initialize DataTables for each table in your tabs
+        // Example for a table with id 'myTable'
+        $("#myTable").DataTable({
+            "responsive": true,
+            "autoWidth": false,
+        });
+        // Repeat for other tables
+    });
+
+</script>
+
+<script src="/adminlte/plugins/datatables/jquery.dataTables.min.js"></script>
+<script src="/adminlte/plugins/datatables-bs4/js/dataTables.bootstrap4.min.js"></script>
+<script src="/adminlte/plugins/datatables-responsive/js/dataTables.responsive.min.js"></script>
+<script src="/adminlte/plugins/datatables-responsive/js/responsive.bootstrap4.min.js"></script>
+
+{{ end }}

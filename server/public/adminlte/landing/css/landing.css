@@ -1,0 +1,233 @@
+.middleText{
+    color: grey;
+}
+a{
+    text-decoration: none;
+    color: black;
+}
+.styled_card {
+    text-align: justify;
+}
+.styled_card:hover{
+    transform: scale(1.03);
+    box-shadow: 0 10px 20px rgba(0,0,0,.12), 0 4px 8px rgba(0,0,0,.06);
+    transition: 0.3s;
+}
+.h3{
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color:#2f3e46;
+}
+.styled_card i{
+position: relative;
+top: 0;
+transition: top ease 0.5s;
+}
+.slogan{
+    font-family:Verdana, Geneva, Tahoma, sans-serif;
+    color: #6c757d;
+}
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap');
+
+.neowrapper,
+.neowrapper .img-area,
+.social-icons a,
+.buttons button{
+background: #ffffff;
+box-shadow: -3px -3px 7px #f5f5f5,
+            3px 3px 5px #e7e7e7;
+}
+.neowrapper{
+position: relative;
+padding: 30px;
+border-radius: 10px;
+display: flex;
+align-items: center;
+justify-content: center;
+flex-direction: column;
+}
+.neowrapper .icon{
+color: #0275d8;
+cursor: pointer;
+opacity: 0.7;
+text-align: center;
+font-size: 90px;
+z-index: 9;
+}
+/* .neowrapper .icon i{
+z-index: 9;
+} */
+.neowrapper .img-area{
+height: 150px;
+width: 150px;
+border-radius: 50%;
+display: flex;
+align-items: center;
+justify-content: center;
+}
+
+.inner-area{
+height: calc(100% - 25px);
+width: calc(100% - 25px);
+border-radius: 50%; 
+display: grid;
+place-items: center;
+}
+
+.inner-area {
+height: 100%;
+width: 100%;
+border-radius: 50%;
+object-fit: cover;
+}
+
+.neowrapper .name{
+font-size: 30px;
+font-weight: 500;
+color: #31344b;
+margin: 10px 0 5px 0;
+}
+.neowrapper .about{
+color: #44476a;
+font-weight: 400;
+font-size: 16px;
+display: flex;
+align-items: center;
+justify-content: center;
+}
+
+.coming_soon {
+position: relative;
+cursor: pointer;
+}
+
+.coming_soon span {
+position: absolute;
+overflow: hidden;
+width: 150px;
+height: 150px;
+top: -10px;
+left: -10px;
+display: flex;
+align-items: center;
+justify-content: center;
+}
+
+.coming_soon span::before {
+content: 'Coming soon';
+position: absolute;
+width: 150%;
+height: 40px;
+background-image: linear-gradient(45deg, #ff6547 0%, #ffb144  51%, #ff7053  100%);
+transform: rotate(-45deg) translateY(-20px);
+display: flex;
+align-items: center;
+justify-content: center;
+color: #fff;
+font-weight: 600;
+letter-spacing: 0.1em;
+text-transform: uppercase;
+box-shadow: 0 5px 10px rgba(48, 46, 46, 0.23);
+}
+
+.coming_soon span::after {
+content: '';
+position: absolute;
+width: 10px;
+bottom: 0;
+left: 0;
+height: 10px;
+z-index: -1;
+box-shadow: 140px -140px #cc3f47;
+background-image: linear-gradient(45deg, #FF512F 0%, #F09819  51%, #FF512F  100%);
+}
+
+    .new {
+    position: relative;
+    cursor: pointer;
+    }
+    
+    .new span {
+    position: absolute;
+    overflow: hidden;
+    width: 150px;
+    height: 150px;
+    top: -10px;
+    left: -10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    }
+    
+    .new span::before {
+    content: 'New';
+    position: absolute;
+    width: 150%;
+    height: 40px;
+    background-image: linear-gradient(45deg, #ff6547 0%, #ffb144  51%, #ff7053  100%);
+    transform: rotate(-45deg) translateY(-20px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+    font-weight: 600;
+    font-size:18px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    box-shadow: 0 5px 10px rgba(48, 46, 46, 0.23);
+    }
+    
+    .new span::after {
+    content: '';
+    position: absolute;
+    width: 10px;
+    bottom: 0;
+    left: 0;
+    height: 10px;
+    z-index: -1;
+    box-shadow: 140px -140px #cc3f47;
+    background-image: linear-gradient(45deg, #FF512F 0%, #F09819  51%, #FF512F  100%);
+    }
+
+/* .badge {
+display: grid;
+place-content: center;
+position: absolute;
+color: #ffffff;
+top: -8px;
+left: -4px;
+width: 50px;
+aspect-ratio: 1 / 1;
+background-image: linear-gradient(45deg, #FF512F 0%, #F09819  51%, #FF512F  100%);
+border-radius: 50%;
+box-shadow: 0 10px 20px
+    rgba(0, 0, 0, 0.5);
+font-size: 16px;
+} */
+/* .badge::before {
+content: "";
+position: absolute;
+border: 8px solid transparent;
+border-top-color: #FF512F;
+border-top-style: double;
+z-index: 99;
+top: -10px;
+left: 50%;
+translate: -50% 0;
+border-radius: inherit;
+width: 40px;
+height: 40px;
+opacity: 0;
+animation: pulse 1.5s
+    infinite linear both;
+animation-play-state: running;
+} */
+@keyframes pulse {
+45% {
+    opacity: 0.6;
+}
+80%,
+100% {
+    opacity: 0;
+    scale: 1.6;
+}
+}

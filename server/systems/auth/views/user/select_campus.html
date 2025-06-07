@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>DIT Paperless | Update Campus</title>
+
+    <!-- Google Font: Source Sans Pro -->
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="/adminlte/plugins/fontawesome-free/css/all.min.css">
+    <!-- icheck bootstrap -->
+    <link rel="stylesheet" href="/adminlte/plugins/icheck-bootstrap/icheck-bootstrap.min.css">
+    <!-- Theme style -->
+    <link rel="stylesheet" href="/adminlte/dist/css/adminlte.min.css">
+</head>
+
+<body class="hold-transition login-page">
+    <div class="login-box">
+        <div class="card card-outline card-dark">
+            <br>
+            <div class="col-12" style="text-align: center">
+                <span class="col-12 " style=" text-align: center; background-color:white;font-size:17px;text-shadow:0.2px 0.2px 0.2px #4C4B4D;
+            font-family: 'Seta Reta NF';
+            font-weight: 600;
+            color: #4C4B4D; !important">
+                    TRAINING FRONTEND
+                </span>
+            </div>
+            <div class="card-header text-center">
+                <img src="/images/dit-logo-transparent.png" alt="" style="width:80px;height:80px"> <br>
+            </div>
+            <div class="card-body">
+                <p class="login-box-msg">Please update your campus.</p>
+                <form action="/auth/users/update-campus" method="post" class="form">
+                    <input type="hidden" name="csrf" value="{{ .csrf }}">
+
+                    <div class="form-row">
+                        <div class="col-12">
+                            <div class="form-group">
+                                <label for="Campus">Campus</label>
+                                <select id="campus_id" name="campus_id" class="form-control select2"
+                                    style="width: 100%;">
+                                    <option value="">Select Your Campus</option>
+                                    {{ range $key, $value:= .campus}}
+                                    <option value="{{$value.ID}}">{{$value.Name}}</option>
+                                    {{end}}
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="col-12">
+                            <div class="form-group">
+                                <button type="submit" class="btn btn-primary">Update Campus</button>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <!-- /.login-card-body -->
+        </div>
+    </div>
+    <!-- /.login-box -->
+
+    <!-- jQuery -->
+    <script src="/adminlte/plugins/jquery/jquery.min.js"></script>
+    <!-- Bootstrap 4 -->
+    <script src="/adminlte/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <!-- AdminLTE App -->
+    <script src="/adminlte/dist/js/adminlte.min.js"></script>
+</body>
+
+</html>

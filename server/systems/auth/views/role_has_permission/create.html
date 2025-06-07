@@ -1,0 +1,74 @@
+{{define "css"}}
+<!-- Select2 -->
+<link rel="stylesheet" href="/adminlte/plugins/select2/css/select2.min.css">
+ 
+<link rel="stylesheet" href="/adminlte/plugins/datatables-bs4/css/dataTables.bootstrap4.min.css">
+<link rel="stylesheet" href="/adminlte/plugins/datatables-responsive/css/responsive.bootstrap4.min.css"> {{ end }}
+{{define "content"}}
+{{ end }} 
+{{define "content"}}
+
+ <div class="row" style="margin-top: -4rem;">
+    <div class="col-12">
+        <div class="callout callout-info">
+            <h4 class="my-1 mb-3 float-left"><i class="fa-solid fa-user-gear text-primary text-small"></i>&nbsp;
+                {{ .title }} For <b>{{.role.Name}}</b>
+            </h4>
+            <div class="btn-group btn-group-sm float-right mt-2" role="group">
+                <a href="/auth/roles/list" class="btn btn-primary" title="List All">
+                    <i class=" fas fa-fw fa-th-list text-white" aria-hidden="true"></i>
+                </a>
+            </div>
+            <br><br>
+        </div>
+    </div>
+</div>
+<div class="card">
+    <div class="card-body">
+        <form action="/auth/role-permissions/store" method="post" class="form">
+            {{include "auth/views/role_has_permission/form"}}
+
+        </form>
+    </div>
+    <!-- /.card-body -->
+</div>
+<!-- /.card -->
+
+{{end}} {{define "js"}}
+<!-- Select2 -->
+<script src="/adminlte/plugins/select2/js/select2.full.min.js"></script>
+<script>
+    $(function() {
+        //Initialize Select2 Elements
+        $('.select2').select2()
+
+        //Initialize Select2 Elements
+        $('.select2bs4').select2({
+            theme: 'bootstrap4'
+        })
+    });
+</script>
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        const groupChecks = document.querySelectorAll('.group-check');
+
+        groupChecks.forEach((groupCheck) => {
+            groupCheck.addEventListener('change', function() {
+                const groupName = this.getAttribute('data-group');
+                const subChecks = document.querySelectorAll(`.sub-check[data-group="${groupName}"]`);
+
+                subChecks.forEach((subCheck) => {
+                    subCheck.checked = this.checked;
+                });
+            });
+        });
+    });
+</script>
+
+<script src="/adminlte/plugins/datatables/jquery.dataTables.min.js"></script>
+<script src="/adminlte/plugins/datatables-bs4/js/dataTables.bootstrap4.min.js"></script>
+<script src="/adminlte/plugins/datatables-responsive/js/dataTables.responsive.min.js"></script>
+<script src="/adminlte/plugins/datatables-responsive/js/responsive.bootstrap4.min.js"></script>
+<!-- page script -->
+
+{{ end }}

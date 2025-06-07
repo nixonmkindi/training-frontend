@@ -1,0 +1,32 @@
+{{define "css"}}
+<!-- Select2 -->
+<link rel="stylesheet" href="/adminlte/plugins/select2/css/select2.min.css">
+{{ end }} 
+{{define "content"}}
+<div class="row" style="margin-top: -3rem;">
+    <div class="col-12">
+        <div class="callout callout-info">
+            <h3 class="my-1 float-left"><i class="fas fa-info-circle text-primary"></i>&nbsp;{{ .title }}</h3>
+            <div class="btn-group btn-group-sm float-right" role="group">
+                <a href="/auth/users/list" class="btn btn-primary" title="List All">
+                    <i class=" fas fa-fw fa-th-list text-white" aria-hidden="true"></i>
+                </a>
+            </div>
+            <br><br>
+        </div>
+    </div>
+</div>
+
+<div class="card">
+    <div class="card-body">
+        <form action="/auth/users/store" method="post" class="form">
+            {{include "auth/views/user/forms/create"}}
+        </form>
+    </div>
+    <!-- /.card-body -->
+</div>
+<!-- /.card -->
+{{end}} {{define "js"}}
+<!-- Select2 -->
+
+{{ end }}

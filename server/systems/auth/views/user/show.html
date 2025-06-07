@@ -1,0 +1,79 @@
+{{define "css"}} {{ end }}
+{{define "content"}}
+
+<div class="row" style="margin-top: -3rem;">
+    <div class="col-12">
+        <div class="callout callout-info">
+            <h3 class="my-1 mb-3 float-left"><i class="fa-solid fa-users text-primary text-small"></i>&nbsp; <b>{{
+                    .data.Name}}</b> Details</h3>
+            <div class="btn-group btn-group-sm float-right mt-2" role="group">
+                <a href="/auth/users/list" class="btn btn-success mr-2 " title="List all"
+                    style="text-decoration: none; color: white;">
+                    All Users
+                </a>
+                {{if hasAnyRole .roles "Admin "}}
+                <a href="/auth/users/create" class="btn btn-primary mr-2" title="Add New"
+                    style="text-decoration: none; color: white;">
+                    Add New User
+                </a>
+                {{end}}
+                <div class="dropdown dropleft float-right">
+                    <button class="btn btn-info btn-sm dropdown-toggle" type="button" id="dropdownMenuButton"
+                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Select Action
+                    </button>
+                    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton"
+                        style="max-height: 200px; overflow-y: auto;">
+                        <form action="/auth/user-roles/list" method="post" class="dropdown-item form">
+                            <input type="hidden" name="id" value="{{ .data.ID }}">
+                            <button class="btn btn-success btn-block" title="Roles">
+                                <i class=" fas fa-fw fa-flag fa-sm" aria-hidden="true"></i>
+                                Roles
+                            </button>
+                        </form>
+                        {{if hasAnyRole .roles "Admin "}}
+                        <form action="/auth/user-permissions/list" method="post" class="dropdown-item form">
+                            <input type="hidden" name="id" value="{{ .data.ID }}">
+                            <button class="btn btn-primary btn-block mr-1 ml-1" title="Permissions">
+                                <i class=" fas fa-fw fa-list fa-sm" aria-hidden="true"></i>
+                                Permissions
+                            </button>
+                        </form>
+                        <form action="/auth/users/edit" method="post" class="dropdown-item form">
+                            <input type="hidden" name="id" value="{{ .data.ID }}">
+                            <button class="btn btn-warning btn-block mr-1 ml-1" title="Update">
+                                <i class=" fas fa-fw fa-pencil-alt fa-sm" aria-hidden="true"></i> 
+                                Edit
+                            </button>
+                        </form>
+                        <form action="/auth/password-reset" method="post" class="dropdown-item form">
+                            <input type="hidden" name="id" value="{{ .data.ID }}">
+                            <button class="btn btn-danger btn-block ml-1" title="Reset Password">
+                                <i class="fa-solid fa-key  fa-sm" aria-hidden="true"></i>
+                                Reset Password
+                            </button>
+                        </form>
+                        {{end}}
+                    </div>
+                </div>
+            </div>
+            <br><br>
+        </div>
+    </div>
+</div>
+<div class="card">
+    <!-- /.card-header -->
+    <div class="card-body">
+        <ul class="list-group list-group-flush">
+            <li class="list-group-item"><b>ID :</b> {{ .data.ID}}</li>
+            <li class="list-group-item"><b>Name :</b> {{ .data.Name}}</li>
+            <li class="list-group-item"><b>Email :</b> {{ .data.Email}}</li>
+            <li class="list-group-item"><b>Unique ID :</b> {{ .data.UniqueID}}</li>
+            <li class="list-group-item"><b>Campus ID :</b> {{ .data.CampusID}}</li>
+            <li class="list-group-item"><b>Date Joined:</b> {{timestamp .data.CreatedAt}}</li>
+        </ul>
+    </div>
+    <!-- /.card-body -->
+</div>
+<!-- /.card -->
+{{end}} {{define "js"}} {{ end }}

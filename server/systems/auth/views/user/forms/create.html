@@ -1,0 +1,41 @@
+<input type="hidden" name="csrf" value="{{ .csrf }}">
+<input type="hidden" name="id" value="{{ .data.ID}}">
+<div class="form-row">
+    <div class="form-group col-md-4">
+        <label for="Name" class="control-label">Name</label>
+        <input type="input" name="name" class="form-control" aria-describedby="Name" value="{{ .data.Name }}">
+    </div>
+    <div class="form-group col-md-4">
+        <label for="email" class="control-label">Email Address</label>
+        <input type="text" name="email" class="form-control" aria-describedby="Email" value="{{ .data.Email }}">
+    </div>
+    <div class="form-group col-md-4">
+        <label for="password" class="control-label">Password</label>
+        <input type="text" name="password" class="form-control" aria-describedby="Password" value="{{ .data.Password }}">
+    </div>
+</div>
+<div class="form-row">
+    <div class="form-group col-md-6">
+        <label for="unique_id" class="control-label">Unique ID</label>
+        <input type="text" name="unique_id" class="form-control" aria-describedby="UniqueID" value="{{ .data.UniqueID }}">
+    </div>
+    <div class="form-group col-md-6">
+        <label for="user_category_id" class="float-left">User Category
+        </label>
+        <select class="form-control select2" name="user_category_id" required>
+            {{ $data := .data.UserCategoryID }}
+            {{ range $key, $value := .userCategories }}
+            {{ if eq $value.ID $data }}
+            <option value="{{ $value.ID }}" selected>{{ $value.Name }}</option>
+            {{ else }}
+            <option value="{{ $value.ID }}">{{ $value.Name }}</option>
+            {{ end }}
+            {{ end }}
+        </select>
+    </div>
+</div>
+<div class="form-group">
+    <div class="col-md-12">
+        <button type="submit" class="btn btn-info btn-block">Create</button>
+    </div>
+</div>

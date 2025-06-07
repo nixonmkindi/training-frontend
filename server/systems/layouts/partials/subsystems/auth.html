@@ -1,0 +1,96 @@
+{{if hasAnyRole .roles "Admin " "Paperless Team"}}
+<li
+        class='nav-item has-treeview {{ menu .path 
+            "/auth/users/" 
+            "/auth/roles/" 
+            "/auth/permissions/"
+            "/auth/user-roles/"  
+            "/auth/user-permissions/" 
+            "/auth/role-permissions/" 
+            "/auth/user-categories/" 
+            "/auth/users/all-profile"
+            "/auth/subsystems/" }}'>
+    <a href="#"
+       class='nav-link {{ active .path 
+        "/auth/users/" 
+        "/auth/roles/" 
+        "/auth/permissions/" 
+        "/auth/user-roles/"  
+        "/auth/user-permissions/" 
+        "/auth/role-permissions/" 
+        "/auth/user-categories/"  
+        "/auth/users/all-profile"
+        "/auth/subsystems/" }}'>
+        <i class="nav-icon fa-solid fa-person-military-rifle"></i>
+        <p>
+            Authentication
+            <i class="right fas fa-angle-left"></i>
+        </p>
+    </a>
+    <ul class="nav nav-treeview">
+        <li class="nav-item">
+            <a href="/auth/users/list" class='nav-link {{ active .path "/auth/users"}}'>
+                <i class="fa-solid fa-user-group nav-icon"></i>
+                <p>
+                    Users
+                </p>
+            </a>
+        </li>
+        {{if hasRole .roles "Admin "}}
+        <li class="nav-item">
+            <a href="/auth/permissions/list"
+               class='nav-link {{ active .path "/auth/permissions/list"}}'>
+                <i class="fa-solid fa-users-gear nav-icon"></i>
+                <p>
+                    Permissions
+                </p>
+            </a>
+        </li>
+        <li class="nav-item">
+            <a href="/auth/roles/list" class='nav-link  {{ active .path "/auth/roles/list"}}'>
+                <i class="fa-solid fa-user-tag nav-icon"></i>
+                <p>
+                    Roles
+                </p>
+            </a>
+        </li>
+        <li class="nav-item">
+            <a href="/auth/subsystems/list" class='nav-link  {{ active .path "/auth/subsystems/list"}}'>
+                <i class="fa-brands fa-ubuntu nav-icon"></i>
+                <p>
+                    Subsystems
+                </p>
+            </a>
+        </li>
+        <li class="nav-item">
+            <a href="/auth/user-categories/list" class='nav-link  {{ active .path "/auth/user-categories/list"}}'>
+                <i class="fa-regular fa-rectangle-list nav-icon"></i>
+                <p>
+                    User Categories
+                </p>
+            </a>
+        </li>
+        {{end}}
+        <li class="nav-item">
+            <a href="/soma/student/edit-user-id" class='nav-link {{ active .path "/soma/student/edit-user-id"}}'>
+                <i class="fa-solid fa-user-pen nav-icon"></i>
+                <p>Change User ID</p>
+            </a>
+        </li>
+        <li class="nav-item">
+            <a href="/auth/reset-email-for-student" class='nav-link {{ active .path "/auth/reset-email-for-student"}}'>
+                <i class="fa-solid fa-envelope nav-icon"></i>
+                <p>Change Student Email</p>
+            </a>
+        </li>
+        <li class="nav-item">
+            <a href="/auth/users/all-profile" class='nav-link {{ active .path "/auth/users/all-profile"}}'>
+                <i class="fa-solid fa-users-viewfinder nav-icon"></i>
+                <p>
+                    All User Profile
+                </p>
+            </a>
+        </li>
+    </ul>
+</li>
+{{ end }}
