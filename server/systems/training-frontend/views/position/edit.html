@@ -1,0 +1,50 @@
+{{define "css"}}
+
+{{ end }}
+{{define "content"}}
+<div class="container-fluid" style="margin-top: -4rem;">
+    <div class="row">
+        <div class="col-12">
+            <div class="callout callout-info">
+                <h3 class="my-1 mb-3 float-left"><i class="fa-solid fa-table-list text-primary"></i>&nbsp;Edit
+                    Position</h3>
+                <br><br>
+            </div>
+        </div>
+    </div>
+    <div class="card">
+        <div class="card-header">
+            <h5 class="my-1 float-left"><i class="fas fa-info-circle text-primary text-small"></i>&nbsp;Edit Position
+                Details
+            </h5>
+            <div class="btn-group btn-group-sm float-right" role="group">
+                <a href="/training-frontend/position/list" class="btn btn-primary mr-1" title="List All">
+                    <i class=" fas fa-fw fa-th-list" aria-hidden="true"></i>
+                </a>
+                <a href="/training-frontend/position/create" class="btn btn-success" title="Add New">
+                    <i class=" fas fa-fw fa-plus" aria-hidden="true"></i>
+                </a>
+            </div>
+        </div>
+        <!-- /.card-header -->
+        <div class="card-body">
+            <form action="/training-frontend/position/update" method="post" class="form">
+                {{include "/training-frontend/views/position/form"}}
+
+                <div class="form-group float-right">
+                    <div class="">
+                        <button type="submit" class="btn btn-primary btn-sm">Save</button>
+                    </div>
+                </div>
+
+            </form>
+        </div>
+        <!-- /.card-body -->
+    </div>
+    <!-- /.card -->
+</div>
+{{end}}
+
+{{define "js"}}
+
+{{ end }}

@@ -1,0 +1,75 @@
+{{define "css"}}
+
+{{ end }}
+{{define "content"}}
+<div class="container-fluid" style="margin-top: -4rem;">
+    <div class="row">
+        <div class="col-12">
+            <div class="callout callout-info">
+                <h3 class="my-1 mb-3 float-left"><i class="fa-solid fa-table-list text-primary"></i>&nbsp;Position
+                    Details</h3>
+                <br><br>
+            </div>
+        </div>
+    </div>
+    <div class="card">
+        <div class="card-header">
+            <h5 class="my-1 float-left"><i class="fas fa-info-circle text-primary text-small"></i>&nbsp;{{ .data.Name}}
+            </h5>
+            <div class="btn-group btn-group-sm float-right" role="group">
+                <a href="/training-frontend/position/list" class="btn btn-primary" title="List all">
+                    <i class=" fas fa-fw fa-th-list" aria-hidden="true"></i>
+                </a>
+
+                <a href="/training-frontend/position/create" class="btn btn-success" title="Add New">
+                    <i class=" fas fa-fw fa-plus" aria-hidden="true"></i>
+                </a>
+
+                <a href="/training-frontend/position/edit/{{ .data.ID }}" class="btn btn-primary" title="Edit">
+                    <i class=" fas fa-fw fa-pencil-alt" aria-hidden="true"></i>
+                </a>
+                <a href="/training-frontend/position/delete/{{ .data.ID }}" class="btn btn-danger" title="Delete"
+                   onclick="return confirm('Are you sure?')">
+                    <i class=" fas fa-fw fa-trash" aria-hidden="true"></i>
+                </a>
+            </div>
+        </div>
+
+        <!-- /.card-header -->
+        <div class="card-body">
+            <div class="row">
+                <div class="col-md-5 col-sm-12">
+                    <table class="table table-sm p-2 table-bordered">
+                        <tr>
+                            <th colspan="2">Position Information
+                                <div class="btn-group btn-group-sm float-right" role="group">
+                                </div>
+                            </th>
+                        </tr>
+                        <tbody>
+                        <tr>
+                            <td>ID</td>
+                            <td>{{ .data.ID}}</td>
+                        </tr>
+                        <tr>
+                            <td>Name</td>
+                            <td>{{ .data.Name}}</td>
+                        </tr>
+                        <tr>
+                            <td>Description</td>
+                            <td>{{ .data.Description}}</td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+        <!-- /.card-body -->
+    </div>
+    <!-- /.card -->
+</div>
+{{end}}
+
+{{define "js"}}
+
+{{ end }}

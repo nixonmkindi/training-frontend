@@ -1,0 +1,45 @@
+{{define "css"}}
+
+{{ end }}
+{{define "content"}}
+<div class="container-fluid" style="margin-top: -4rem;">
+    <div class="row mb-3">
+        <div class="col-12">
+            <div class="callout callout-info">
+                <h3 class="my-1 mb-3 float-left"><i class="fa-solid fa-table-list text-primary"></i>&nbsp;Create Position
+                </h3>
+                <br><br>
+            </div>
+        </div>
+    </div>
+    <div class="card">
+        <div class="card-header">
+            <h5 class="my-1 float-left"><i class="fas fa-info-circle text-info text-small"></i>&nbsp;{{ .title }}
+            </h5>
+            <div class="btn-group btn-group-sm float-right" role="group">
+                <a href="/training-frontend/position/list" class="btn btn-primary" title="List All">
+                    <i class=" fas fa-fw fa-th-list" aria-hidden="true"></i>
+                </a>
+            </div>
+        </div>
+
+        <div class="card-body">
+            <form action="/training-frontend/position/store" method="post" class="form">
+                <input type="hidden" name="csrf" value="{{ .csrf }}">
+                {{include "/training-frontend/views/position/form"}}
+
+                <div class="form-group float-right">
+                    <button type="submit" class="btn btn-primary btn-sm">Create Position</button>
+                </div>
+
+            </form>
+        </div>
+        <!-- /.card-body -->
+    </div>
+    <!-- /.card -->
+</div>
+{{end}}
+
+{{define "js"}}
+
+{{ end }}

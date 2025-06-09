@@ -12,7 +12,7 @@ import (
 // TODO: move these into config.yml configuration file
 const (
 	AuthBaseUrl    = "http://localhost:4320/auth/api/v1"
-	BackendBaseUrl = "http://localhost:4322/soma/api/v1"
+	BackendBaseUrl = "http://localhost:4317/training-backend/api/v1"
 	AuditBaseUrl   = "http://localhost:4331/audit/api/v1"
 )
 

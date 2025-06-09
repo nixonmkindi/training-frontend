@@ -20,4 +20,15 @@ func WebRouters(app *echo.Echo) {
 		frontend.GET("/default-error", controllers.DefaultErrorPage)
 		frontend.GET("/no-exam-data", controllers.NoExaminationDataDefaultPage)
 	}
+
+	position := app.Group("/training-frontend/position")
+	{
+		position.GET("/show/:id", controllers.ShowPosition)
+		position.GET("/list", controllers.ListPosition)
+		position.GET("/create", controllers.CreatePosition)
+		position.POST("/store", controllers.StorePosition)
+		position.GET("/edit/:id", controllers.EditPosition)
+		position.POST("/update", controllers.UpdatePosition)
+		position.GET("/delete/:id", controllers.DeletePosition)
+	}
 }
