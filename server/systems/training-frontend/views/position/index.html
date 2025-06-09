@@ -27,37 +27,39 @@
         <div class="card-body">
             <table id="datatable" class="table table-bordered table-striped">
                 <thead>
-                <tr>
-                    <th>S/No</th>
-                    <th>Name</th>
-                    <th>Action</th>
-                </tr>
+                    <tr>
+                        <th>S/No</th>
+                        <th>Name</th>
+                        <th>Action</th>
+                    </tr>
                 </thead>
                 <tbody>
-                {{range $index, $value := .data}}
-                <tr>
-                    <td scope="row">{{add $index 1}}</td>
-                    <td>{{$value.Name}}</td>
-                    <td>
-                        <div class="btn-group btn-group-sm float-right" role="group">
-                            <a href="/training-frontend/position/show/{{ $value.ID }}" class="btn btn-info" title="Show">
-                                <i class=" fas fa-fw fa-eye" aria-hidden="true"></i>
-                            </a>
-                            <a href="/training-frontend/position/edit/{{ $value.ID }}" class="btn btn-primary mr-1 ml-1" title="Edit">
-                                <i class=" fas fa-fw fa-pencil-alt" aria-hidden="true"></i>
-                            </a>
-                            <a href="/training-frontend/position/delete/{{ $value.ID }}" class="btn btn-danger" title="Delete"
-                               onclick="return confirm('Are you sure')">
-                                <i class=" fas fa-fw fa-trash-alt" aria-hidden="true"></i>
-                            </a>
+                    {{range $index, $value := .data}}
+                    <tr>
+                        <td scope="row">{{add $index 1}}</td>
+                        <td>{{$value.Name}}</td>
+                        <td>
+                            <div class="btn-group btn-group-sm float-right" role="group">
+                                <a href="/training-frontend/position/show/{{ $value.ID }}" class="btn btn-info"
+                                    title="Show">
+                                    <i class=" fas fa-fw fa-eye" aria-hidden="true"></i>
+                                </a>
+                                <a href="/training-frontend/position/edit/{{ $value.ID }}"
+                                    class="btn btn-primary mr-1 ml-1" title="Edit">
+                                    <i class=" fas fa-fw fa-pencil-alt" aria-hidden="true"></i>
+                                </a>
+                                <a href="/training-frontend/position/delete/{{ $value.ID }}" class="btn btn-danger"
+                                    title="Delete" onclick="return confirm('Are you sure')">
+                                    <i class=" fas fa-fw fa-trash-alt" aria-hidden="true"></i>
+                                </a>
 
-                        </div>
+                            </div>
 
-                    </td>
+                        </td>
 
-                </tr>
+                    </tr>
 
-                {{end}}
+                    {{end}}
 
                 </tbody>
             </table>
